@@ -1,43 +1,48 @@
-# CalcMate
+# CalcMate — 全球工具站（AdSense 被動收入計畫）
 
-A fast, elegant calculator web app — no build step, no dependencies.
+免費線上計算器集合站。純前端運算、零後端成本，Vercel 免費方案即可營運。
 
-![CalcMate](https://img.shields.io/badge/status-ready-4f6bff)
+## 技術架構
 
-## Features
+- Next.js 14 (App Router) + TypeScript + Tailwind CSS
+- 所有工具皆為純 client-side 運算，無資料庫、無 API 成本
+- 完整 SEO + GEO：metadata template、Schema.org（WebApplication / FAQPage / BreadcrumbList）、sitemap、robots（允許 AI 爬蟲）、llms.txt
 
-- **Standard & Scientific modes** — basic arithmetic plus `sin`, `cos`, `tan`, `ln`, `log`, `√`, `x^y`, `n!`, `1/x`, `x²`, `π`, `e`, and `mod`.
-- **Safe evaluation** — expressions are parsed with a hand-written tokenizer and shunting-yard algorithm. **No `eval()`**, so user input is never executed as code.
-- **Keyboard support** — type digits, operators, `(`, `)`, `Enter`/`=` to evaluate, `Backspace` to delete, `Esc` to clear.
-- **History** — the last 50 calculations are stored in `localStorage`; click any entry to reuse its result.
-- **Light / dark theme** — respects your system preference and remembers your choice.
-- **Responsive** — works full-screen on mobile.
-
-## Usage
-
-Open `index.html` in any modern browser. That's it — everything is static.
-
-To serve locally:
+## 本地開發
 
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+npm install
+npm run dev
 ```
 
-## Files
+## 部署（Vercel）
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Markup and layout |
-| `styles.css` | Theme, layout, and component styling |
-| `calc.js` | Expression engine, UI wiring, history, keyboard, theming |
+1. 推上 GitHub，在 Vercel import 這個 repo（零設定，自動偵測 Next.js）
+2. 買好正式網域後：
+   - Vercel 專案綁定網域
+   - 設定環境變數 `NEXT_PUBLIC_SITE_URL=https://你的網域`（或直接改 `lib/site.ts`）
+3. 把 `lib/site.ts` 的 `CONTACT_EMAIL` 換成真實信箱（AdSense 審核需要）
 
-## How it works
+## 新增一個工具（每週例行）
 
-`calc.js` evaluates expressions in three stages:
+1. 在 `lib/site.ts` 的 `TOOLS` 陣列加一筆（slug、name、description、keywords）
+2. 建立 `app/<slug>/Calculator.tsx`（'use client' 互動元件）
+3. 建立 `app/<slug>/page.tsx`（metadata + 500–800 字說明 + 5 則 FAQ，套 `ToolShell`）
+4. sitemap、首頁列表、footer、llms.txt 的工具清單會自動帶入（llms.txt 需手動補一段）
 
-1. **Tokenize** — split the input string into numbers, operators, functions, constants, and parentheses (handling unary `+`/`-`).
-2. **Shunting-yard** — convert the token stream to Reverse Polish Notation, respecting operator precedence and associativity.
-3. **Evaluate RPN** — walk the RPN stack to produce the result, guarding against `NaN` / `Infinity`.
+## AdSense 上線清單
 
-Results are rounded to 12 significant places and switch to exponential notation for very large or very small magnitudes.
+- [ ] 15–20 個品質工具頁
+- [ ] 正式網域已綁定（vercel.app 子網域無法過審）
+- [ ] CONTACT_EMAIL 已換成真實信箱
+- [ ] Google Search Console 已提交 sitemap、頁面已被索引
+- [ ] 申請 AdSense → 過審後把 AdSense script 貼進 `app/layout.tsx`（已留註解位置）
+- [ ] 過審後在 `public/ads.txt` 放入 Google 給的 publisher ID
+
+## 每週經營循環（5–10 小時）
+
+1. 看 GSC：有曝光沒點擊的關鍵字 → 優化該頁 title
+2. 排名 5–20 的頁面 → 加強內容與內部連結
+3. 新增 2–4 個工具頁（跟著 GSC 關鍵字方向）
+4. 提交工具目錄站、論壇回答附連結（反向連結）
+5. 月度檢視：頁面數、瀏覽量、RPM、日收
