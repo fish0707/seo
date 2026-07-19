@@ -58,6 +58,36 @@ detailed FAQ.
   level using the Mifflin-St Jeor BMR equation times an activity factor
   (1.2-1.9). Also gives -500 and +500 kcal targets for weight loss/gain.
 
+- Sales Tax Calculator: /sales-tax-calculator
+  Add tax to a pre-tax price (total = price*(1+rate/100)) or reverse a
+  tax-inclusive total to the pre-tax price (pre-tax = total/(1+rate/100))
+  and the tax paid.
+
+- Salary Calculator: /salary-calculator
+  Convert gross pay between hourly, daily, weekly, monthly, and annual
+  based on hours/week, days/week, and weeks/year. annual = hourly *
+  hours/week * weeks/year; other periods derived from the annual figure.
+
+- GPA Calculator: /gpa-calculator
+  Weighted grade point average on the 4.0 scale from per-course letter
+  grades and credit hours. GPA = sum(credits*points) / sum(credits).
+
+- Pregnancy Due Date Calculator: /due-date-calculator
+  Estimated due date via Naegele's rule (LMP + 280 days), adjusted for
+  cycle length, plus current gestational age in weeks/days and trimester.
+
+- Hours Calculator: /hours-calculator
+  Duration between a start and end time minus an unpaid break, in hours
+  and minutes and as decimal hours (minutes/60). Handles overnight shifts.
+
+- Pace Calculator: /pace-calculator
+  Running pace (time/distance) per km and per mile, plus average speed,
+  from a distance and a hh:mm:ss time. 1 mi = 1.609344 km.
+
+- Temperature Converter: /temperature-converter
+  Convert between Celsius, Fahrenheit, and Kelvin. F = C*9/5+32;
+  C = (F-32)*5/9; K = C+273.15.
+
 ## Other pages
 
 - About: /about — how the tools work and the accuracy principles
