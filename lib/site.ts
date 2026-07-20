@@ -2,11 +2,11 @@
 // After buying the real domain, update SITE_URL (or set NEXT_PUBLIC_SITE_URL in Vercel).
 
 export const SITE_NAME = 'CalcMate'
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calcmate-tools.vercel.app'
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://calc-mates.com'
 export const SITE_TAGLINE = 'Free Online Calculators for Everyday Life'
 export const SITE_DESCRIPTION =
   'Free, fast, and accurate online calculators. Age calculator, date difference, percentage calculator and more — no signup, no ads walls, works on any device.'
-export const CONTACT_EMAIL = 'hello@calcmate.example' // TODO: replace with real inbox before AdSense review
+export const CONTACT_EMAIL = 'hello@calc-mates.com'
 
 export type Tool = {
   slug: string
