@@ -88,6 +88,26 @@ detailed FAQ.
   Convert between Celsius, Fahrenheit, and Kelvin. F = C*9/5+32;
   C = (F-32)*5/9; K = C+273.15.
 
+- Ideal Weight Calculator: /ideal-weight-calculator
+  Ideal body weight from height and sex using the Robinson, Miller,
+  Devine, and Hamwi formulas (base weight at 5 ft plus a fixed amount per
+  inch over), plus the healthy weight range for a BMI of 18.5-24.9.
+
+- Body Fat Calculator: /body-fat-calculator
+  Body fat percentage via the U.S. Navy tape method from height, neck,
+  waist (and hip for women) in cm, with ACE category bands and, if weight
+  is given, fat mass and lean mass.
+
+- ROI Calculator: /roi-calculator
+  Return on investment from cost and final value: ROI = (final-cost)/cost
+  *100, net profit, and annualized return (CAGR) = (final/cost)^(1/years)-1
+  when a holding period is given.
+
+- Fuel Cost Calculator: /fuel-cost-calculator
+  Trip fuel cost from distance, fuel economy, and price. Metric: fuel =
+  distance/100 * L/100km. Imperial: fuel = distance / mpg. cost = fuel *
+  price; also cost per km/mile.
+
 ## Other pages
 
 - About: /about — how the tools work and the accuracy principles

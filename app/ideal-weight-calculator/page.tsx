@@ -1,0 +1,82 @@
+import type { Metadata } from 'next'
+import { TOOLS, toolUrl } from '@/lib/site'
+import ToolShell, { type Faq } from '@/components/ToolShell'
+import Calculator from './Calculator'
+
+const tool = TOOLS.find(t => t.slug === 'ideal-weight-calculator')!
+
+export const metadata: Metadata = {
+  title: 'Ideal Weight Calculator — Ideal Body Weight for Your Height',
+  description:
+    'Free ideal weight calculator. Estimate your ideal body weight from height and sex using the Robinson, Devine, Miller, and Hamwi formulas, plus the healthy BMI range.',
+  keywords: tool.keywords,
+  alternates: { canonical: toolUrl(tool.slug) },
+  openGraph: {
+    title: 'Ideal Weight Calculator — Ideal Body Weight for Your Height',
+    description: tool.description,
+    url: toolUrl(tool.slug),
+  },
+}
+
+const faqs: Faq[] = [
+  {
+    q: 'How is ideal body weight calculated?',
+    a: 'The classic formulas start from a base weight at 5 feet of height and add a fixed amount per inch above that. For example, the Robinson formula uses 52 kg plus 1.9 kg per inch over 5 feet for men, and 49 kg plus 1.7 kg per inch for women. This tool shows four widely used formulas side by side.',
+  },
+  {
+    q: 'Why do the formulas give different numbers?',
+    a: 'Each formula was developed from different data and for different purposes — some originally for medication dosing rather than general health. Robinson and Miller tend to give lower figures, Devine and Hamwi slightly higher. Seeing the range is more useful than trusting any single number.',
+  },
+  {
+    q: 'Is ideal body weight the same as a healthy weight?',
+    a: 'Not exactly. Ideal body weight formulas produce a single target based only on height and sex, while a healthy weight is a range. That is why this calculator also shows the weight range corresponding to a BMI of 18.5 to 24.9, which most health bodies treat as healthy.',
+  },
+  {
+    q: 'Do these formulas account for muscle or frame size?',
+    a: 'No. Like BMI, ideal weight formulas use only height and sex, so they do not distinguish muscle from fat or account for a larger or smaller frame. A muscular athlete may weigh well above their "ideal" figure while being very lean. Use the result as a rough reference, not a strict goal.',
+  },
+  {
+    q: 'How much should I weigh for my height?',
+    a: 'There is no single correct answer. A reasonable approach is to look at the healthy BMI range for your height, which this tool shows, and treat the formula estimates as points within a broader healthy band. Body composition, fitness, and how you feel matter more than hitting an exact number.',
+  },
+]
+
+export default function Page() {
+  return (
+    <ToolShell
+      tool={tool}
+      faqs={faqs}
+      article={
+        <>
+          <h2>How to use the ideal weight calculator</h2>
+          <p>
+            Choose metric or imperial units, select your sex, and enter your height. The calculator
+            shows the ideal body weight from four established formulas — Robinson, Miller, Devine, and
+            Hamwi — alongside the healthy weight range for your height based on BMI. Everything is
+            worked out in your browser.
+          </p>
+
+          <h2>Why show four formulas?</h2>
+          <p>
+            &ldquo;Ideal weight&rdquo; is not a single scientific constant. Several formulas exist,
+            each built from different populations and originally intended for different uses, so they
+            disagree by a few kilograms. Rather than pick one and present it as the truth, this tool
+            lays them out together so you can see the sensible range they collectively point to.
+          </p>
+
+          <h2>Reading the result sensibly</h2>
+          <p>
+            Treat these numbers as a reference band, not a target to chase to the decimal. Because the
+            formulas rely only on height and sex, they cannot see muscle, frame size, or body
+            composition — the same limitation as BMI. If your weight sits within the healthy BMI
+            range shown here and you feel well, you are almost certainly fine. For personal goals,
+            body composition and fitness are better guides than any single ideal-weight figure, and a
+            healthcare professional can give advice tailored to you.
+          </p>
+        </>
+      }
+    >
+      <Calculator />
+    </ToolShell>
+  )
+}

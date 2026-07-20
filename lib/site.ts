@@ -161,6 +161,42 @@ export const TOOLS: Tool[] = [
     keywords:
       'temperature converter, celsius to fahrenheit, fahrenheit to celsius, kelvin converter, c to f, convert temperature',
   },
+  {
+    slug: 'ideal-weight-calculator',
+    name: 'Ideal Weight Calculator',
+    shortName: 'Ideal Weight',
+    description:
+      'Estimate your ideal body weight from height and sex using the Robinson, Devine, Miller, and Hamwi formulas, plus the healthy weight range for your height.',
+    keywords:
+      'ideal weight calculator, ideal body weight, healthy weight for height, robinson formula, devine formula, how much should i weigh',
+  },
+  {
+    slug: 'body-fat-calculator',
+    name: 'Body Fat Calculator',
+    shortName: 'Body Fat',
+    description:
+      'Estimate your body fat percentage with the U.S. Navy method from a few tape measurements, and see your body fat category and fat mass.',
+    keywords:
+      'body fat calculator, body fat percentage, us navy body fat, how to measure body fat, body fat category, lean body mass',
+  },
+  {
+    slug: 'roi-calculator',
+    name: 'ROI Calculator',
+    shortName: 'ROI',
+    description:
+      'Calculate return on investment as a percentage from your cost and final value, plus the annualized return when you enter a holding period.',
+    keywords:
+      'roi calculator, return on investment, roi percentage, annualized return calculator, investment return, net profit calculator',
+  },
+  {
+    slug: 'fuel-cost-calculator',
+    name: 'Fuel Cost Calculator',
+    shortName: 'Fuel Cost',
+    description:
+      'Work out the fuel cost of a trip from the distance, your vehicle’s fuel economy, and the price of fuel, in metric or imperial units.',
+    keywords:
+      'fuel cost calculator, gas cost calculator, trip fuel cost, cost of driving, petrol cost calculator, fuel consumption cost',
+  },
 ]
 
 export const toolUrl = (slug: string) => `${SITE_URL}/${slug}`
