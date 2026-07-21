@@ -233,6 +233,51 @@ export const TOOLS: Tool[] = [
     keywords:
       'ovulation calculator, fertile window calculator, fertility calculator, when do i ovulate, ovulation day, most fertile days',
   },
+  {
+    slug: 'weight-converter',
+    name: 'Weight Converter',
+    shortName: 'Weight',
+    description:
+      'Convert weight and mass between milligrams, grams, kilograms, ounces, pounds, and stones instantly, with every unit shown at once.',
+    keywords:
+      'weight converter, mass converter, kg to lbs, pounds to kg, grams to ounces, stone to kg, convert weight units',
+  },
+  {
+    slug: 'calories-burned-calculator',
+    name: 'Calories Burned Calculator',
+    shortName: 'Calories Burned',
+    description:
+      'Estimate the calories you burn during exercise from your body weight, the activity, and how long you do it, using MET values.',
+    keywords:
+      'calories burned calculator, calories burned walking, calories burned running, exercise calorie calculator, met calculator, how many calories did i burn',
+  },
+  {
+    slug: 'simple-interest-calculator',
+    name: 'Simple Interest Calculator',
+    shortName: 'Simple Interest',
+    description:
+      'Calculate simple interest and the total amount from a principal, annual interest rate, and time period, with the exact formula shown.',
+    keywords:
+      'simple interest calculator, simple interest formula, principal interest rate time, calculate interest, interest on a loan, total amount with interest',
+  },
+  {
+    slug: 'markup-calculator',
+    name: 'Markup Calculator',
+    shortName: 'Markup',
+    description:
+      'Work out selling price, profit, and profit margin from a cost and a markup percentage — and see the difference between markup and margin.',
+    keywords:
+      'markup calculator, margin calculator, selling price calculator, profit margin, markup vs margin, cost plus pricing',
+  },
+  {
+    slug: 'speed-converter',
+    name: 'Speed Converter',
+    shortName: 'Speed',
+    description:
+      'Convert speed between kilometres per hour, miles per hour, metres per second, feet per second, and knots instantly.',
+    keywords:
+      'speed converter, kmh to mph, mph to kmh, meters per second, knots converter, convert speed units',
+  },
 ]
 
 export const toolUrl = (slug: string) => `${SITE_URL}/${slug}`

@@ -127,6 +127,26 @@ detailed FAQ.
   (ovulation -5 to +1 days), and next period date, from the last period
   date and cycle length.
 
+- Weight Converter: /weight-converter
+  Convert mass between mg, g, kg, oz, lb, and stone. All units defined
+  exactly in grams (1 lb = 453.59237 g, 1 oz = 28.349523125 g, 1 st = 14 lb).
+
+- Calories Burned Calculator: /calories-burned-calculator
+  Calories burned in exercise from body weight, activity, and duration:
+  kcal = MET * weight(kg) * hours, using MET values for common activities.
+
+- Simple Interest Calculator: /simple-interest-calculator
+  Simple interest I = P * r * t (rate as %/100, time in years) and the
+  total amount P + I. Contrast with compound interest.
+
+- Markup Calculator: /markup-calculator
+  Selling price = cost * (1 + markup/100), profit, and profit margin
+  (profit/price*100). Explains markup vs margin.
+
+- Speed Converter: /speed-converter
+  Convert speed between km/h, mph, m/s, ft/s, and knots. Units defined
+  exactly in m/s (1 mph = 0.44704, 1 knot = 0.514444 m/s).
+
 ## Other pages
 
 - About: /about — how the tools work and the accuracy principles

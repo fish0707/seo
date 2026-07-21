@@ -1,0 +1,81 @@
+import type { Metadata } from 'next'
+import { TOOLS, toolUrl } from '@/lib/site'
+import ToolShell, { type Faq } from '@/components/ToolShell'
+import Calculator from './Calculator'
+
+const tool = TOOLS.find(t => t.slug === 'calories-burned-calculator')!
+
+export const metadata: Metadata = {
+  title: 'Calories Burned Calculator — Exercise Calorie Estimator',
+  description:
+    'Free calories burned calculator. Estimate the calories you burn during exercise from your weight, the activity, and the duration, using MET values.',
+  keywords: tool.keywords,
+  alternates: { canonical: toolUrl(tool.slug) },
+  openGraph: {
+    title: 'Calories Burned Calculator — Exercise Calorie Estimator',
+    description: tool.description,
+    url: toolUrl(tool.slug),
+  },
+}
+
+const faqs: Faq[] = [
+  {
+    q: 'How are calories burned during exercise calculated?',
+    a: 'The estimate uses MET (Metabolic Equivalent of Task) values: calories = MET × body weight in kilograms × time in hours. Each activity has a MET value representing how much energy it uses compared with sitting still, so heavier people and longer or harder activities burn more.',
+  },
+  {
+    q: 'What is a MET?',
+    a: 'A MET is a unit of energy expenditure. One MET is the energy you use at rest. An activity of 8 METs uses eight times as much energy per minute as sitting quietly. Brisk walking is around 5 METs, running roughly 10, and vigorous jump rope over 12.',
+  },
+  {
+    q: 'Why does body weight affect calories burned?',
+    a: 'Moving a heavier body takes more energy, so at the same activity and duration a heavier person burns more calories than a lighter one. That is why the formula multiplies by your weight — entering an accurate figure gives a better estimate.',
+  },
+  {
+    q: 'How accurate is this estimate?',
+    a: 'MET-based figures are solid averages but not exact for any individual. Your real burn depends on intensity, fitness, efficiency, terrain, and body composition. Treat the number as a reasonable ballpark and, if you have a heart-rate monitor, use it to refine harder sessions.',
+  },
+  {
+    q: 'Does building muscle help me burn more calories?',
+    a: 'Somewhat. Muscle burns a little more energy at rest than fat, and being fitter lets you train harder and longer, which burns more overall. The bigger driver day to day, though, is simply how much you move — total activity matters more than resting metabolism for most people.',
+  },
+]
+
+export default function Page() {
+  return (
+    <ToolShell
+      tool={tool}
+      faqs={faqs}
+      article={
+        <>
+          <h2>How to use the calories burned calculator</h2>
+          <p>
+            Choose your activity, enter your body weight and how many minutes you exercised, and the
+            calculator estimates the calories burned along with a per-minute figure. Switch between
+            kilograms and pounds with the toggle. Everything is worked out in your browser.
+          </p>
+
+          <h2>How the estimate works</h2>
+          <p>
+            Each activity is assigned a MET value — a measure of how much energy it uses compared with
+            resting. Multiplying the MET value by your body weight and the time spent gives an estimate
+            of energy expenditure. This is the same approach used in fitness research, which is why it
+            is a reliable way to compare activities: you can immediately see that half an hour of jump
+            rope burns far more than half an hour of yoga.
+          </p>
+
+          <h2>Using it to reach your goals</h2>
+          <p>
+            Pairing this with a daily calorie target makes planning easier. If you know roughly how
+            much you burn in a session, you can balance it against what you eat to create the deficit
+            or surplus you want. Remember these are estimates — real burn varies with intensity and
+            individual factors — so use the numbers as a guide and let your results over a few weeks
+            fine-tune your plan. This tool is for general information, not medical advice.
+          </p>
+        </>
+      }
+    >
+      <Calculator />
+    </ToolShell>
+  )
+}
