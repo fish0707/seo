@@ -1,20 +1,8 @@
 'use client'
 import { useState } from 'react'
+import { getCategory, convert, fmtConv, unitLabel } from '@/lib/conversions'
 
-// Every unit expressed in metres per second.
-const UNITS: { key: string; label: string; ms: number }[] = [
-  { key: 'kmh', label: 'Kilometres/hour (km/h)', ms: 0.277777778 },
-  { key: 'mph', label: 'Miles/hour (mph)', ms: 0.44704 },
-  { key: 'ms', label: 'Metres/second (m/s)', ms: 1 },
-  { key: 'fts', label: 'Feet/second (ft/s)', ms: 0.3048 },
-  { key: 'kn', label: 'Knots (kn)', ms: 0.514444444 },
-]
-
-const fmt = (n: number) => {
-  if (!Number.isFinite(n)) return '—'
-  if (n !== 0 && (Math.abs(n) < 1e-4 || Math.abs(n) >= 1e9)) return n.toExponential(4)
-  return n.toLocaleString('en-US', { maximumFractionDigits: 4 })
-}
+const UNITS = getCategory('speed').units
 
 export default function SpeedConverter() {
   const [value, setValue] = useState('')
@@ -22,8 +10,7 @@ export default function SpeedConverter() {
 
   const v = parseFloat(value)
   const valid = value !== '' && Number.isFinite(v)
-  const fromUnit = UNITS.find(u => u.key === from)!
-  const ms = valid ? v * fromUnit.ms : NaN
+  const fromUnit = UNITS.find(u => u.slug === from)!
 
   return (
     <div className="card">
@@ -35,17 +22,17 @@ export default function SpeedConverter() {
         <label className="block">
           <span className="text-sm font-medium text-muted mb-1.5 block">From</span>
           <select value={from} onChange={e => setFrom(e.target.value)} className="input-field">
-            {UNITS.map(u => <option key={u.key} value={u.key}>{u.label}</option>)}
+            {UNITS.map(u => <option key={u.slug} value={u.slug}>{unitLabel(u)}</option>)}
           </select>
         </label>
       </div>
 
       {valid && (
         <div className="mt-6 bg-surface rounded-xl p-5 space-y-2">
-          {UNITS.filter(u => u.key !== from).map(u => (
-            <div key={u.key} className="flex justify-between items-baseline">
-              <span className="text-sm text-muted">{u.label}</span>
-              <span className="text-lg font-semibold">{fmt(ms / u.ms)}</span>
+          {UNITS.filter(u => u.slug !== from).map(u => (
+            <div key={u.slug} className="flex justify-between items-baseline">
+              <span className="text-sm text-muted">{unitLabel(u)}</span>
+              <span className="text-lg font-semibold">{fmtConv(convert(v, fromUnit, u))}</span>
             </div>
           ))}
         </div>

@@ -21,11 +21,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
+    images: [{ url: `/og?title=${encodeURIComponent(SITE_NAME)}`, width: 1200, height: 630 }],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
+    images: [`/og?title=${encodeURIComponent(SITE_NAME)}`],
   },
   alternates: {
     canonical: SITE_URL,

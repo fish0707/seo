@@ -147,6 +147,20 @@ detailed FAQ.
   Convert speed between km/h, mph, m/s, ft/s, and knots. Units defined
   exactly in m/s (1 mph = 0.44704, 1 knot = 0.514444 m/s).
 
+## Unit conversion pages
+
+- Converters hub: /convert
+  Index of every unit-pair converter across length, weight, speed, and
+  temperature.
+
+- Individual conversions: /convert/<from>-to-<to>
+  Dedicated pages for each unit pair, e.g. /convert/cm-to-inches,
+  /convert/kg-to-lbs, /convert/celsius-to-fahrenheit, /convert/kmh-to-mph.
+  Each page has a live converter, the exact conversion factor/formula, and
+  a reference table of common values. Length units: mm, cm, m, km, in, ft,
+  yd, mi. Weight units: mg, g, kg, oz, lb, stone. Speed units: km/h, mph,
+  m/s, ft/s, knots. Temperature units: Celsius, Fahrenheit, Kelvin.
+
 ## Other pages
 
 - About: /about — how the tools work and the accuracy principles

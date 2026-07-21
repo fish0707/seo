@@ -1,23 +1,8 @@
 'use client'
 import { useState } from 'react'
+import { getCategory, convert, fmtConv, unitLabel } from '@/lib/conversions'
 
-// Every unit expressed in metres.
-const UNITS: { key: string; label: string; m: number }[] = [
-  { key: 'mm', label: 'Millimetres (mm)', m: 0.001 },
-  { key: 'cm', label: 'Centimetres (cm)', m: 0.01 },
-  { key: 'm', label: 'Metres (m)', m: 1 },
-  { key: 'km', label: 'Kilometres (km)', m: 1000 },
-  { key: 'in', label: 'Inches (in)', m: 0.0254 },
-  { key: 'ft', label: 'Feet (ft)', m: 0.3048 },
-  { key: 'yd', label: 'Yards (yd)', m: 0.9144 },
-  { key: 'mi', label: 'Miles (mi)', m: 1609.344 },
-]
-
-const fmt = (n: number) => {
-  if (!Number.isFinite(n)) return '—'
-  if (n !== 0 && (Math.abs(n) < 1e-4 || Math.abs(n) >= 1e9)) return n.toExponential(4)
-  return n.toLocaleString('en-US', { maximumFractionDigits: 6 })
-}
+const UNITS = getCategory('length').units
 
 export default function LengthConverter() {
   const [value, setValue] = useState('')
@@ -25,8 +10,7 @@ export default function LengthConverter() {
 
   const v = parseFloat(value)
   const valid = value !== '' && Number.isFinite(v)
-  const fromUnit = UNITS.find(u => u.key === from)!
-  const metres = valid ? v * fromUnit.m : NaN
+  const fromUnit = UNITS.find(u => u.slug === from)!
 
   return (
     <div className="card">
@@ -38,17 +22,17 @@ export default function LengthConverter() {
         <label className="block">
           <span className="text-sm font-medium text-muted mb-1.5 block">From</span>
           <select value={from} onChange={e => setFrom(e.target.value)} className="input-field">
-            {UNITS.map(u => <option key={u.key} value={u.key}>{u.label}</option>)}
+            {UNITS.map(u => <option key={u.slug} value={u.slug}>{unitLabel(u)}</option>)}
           </select>
         </label>
       </div>
 
       {valid && (
         <div className="mt-6 bg-surface rounded-xl p-5 space-y-2">
-          {UNITS.filter(u => u.key !== from).map(u => (
-            <div key={u.key} className="flex justify-between items-baseline">
-              <span className="text-sm text-muted">{u.label}</span>
-              <span className="text-lg font-semibold">{fmt(metres / u.m)}</span>
+          {UNITS.filter(u => u.slug !== from).map(u => (
+            <div key={u.slug} className="flex justify-between items-baseline">
+              <span className="text-sm text-muted">{unitLabel(u)}</span>
+              <span className="text-lg font-semibold">{fmtConv(convert(v, fromUnit, u))}</span>
             </div>
           ))}
         </div>

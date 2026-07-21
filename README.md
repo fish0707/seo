@@ -30,6 +30,13 @@ npm run dev
 3. 建立 `app/<slug>/page.tsx`（metadata + 500–800 字說明 + 5 則 FAQ，套 `ToolShell`）
 4. sitemap、首頁列表、footer、llms.txt 的工具清單會自動帶入（llms.txt 需手動補一段）
 
+## 自動化曝光機制
+
+- **程式化長尾頁**：`lib/conversions.ts` 是單位資料的唯一來源，`app/convert/[slug]/` 依此自動生成 112 個 `/convert/<from>-to-<to>` 頁（cm-to-inches 等），搶高搜尋量長尾字。新增單位只要改 `lib/conversions.ts`。
+- **IndexNow**：`scripts/indexnow.mjs` 在 `postbuild` 自動跑，於 Vercel production 部署時通知 Bing/DuckDuckGo/Seznam 收錄。金鑰檔在 `public/6563d2b1301b566a4f89d42d74e5c21a.txt`。
+- **動態 OG 圖**：`app/og/route.tsx` 依 `?title=` 產生分享預覽圖。
+- 推廣素材（目錄站提交清單、文案）見 `PROMOTION.md`。
+
 ## AdSense 上線清單
 
 - [ ] 15–20 個品質工具頁

@@ -34,6 +34,17 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+
+          <Link
+            href="/convert"
+            className="card hover:border-brand transition-colors group mt-4 flex items-center justify-between"
+          >
+            <div>
+              <h3 className="font-semibold text-lg">Unit Converters</h3>
+              <p className="text-sm text-muted mt-1">Length, weight, speed, and temperature — instant conversions between every unit pair, with tables and formulas.</p>
+            </div>
+            <ArrowRight size={18} className="text-muted group-hover:text-brand group-hover:translate-x-0.5 transition-all shrink-0 ml-4" />
+          </Link>
         </section>
 
         <section className="container-page py-8 prose-tool">

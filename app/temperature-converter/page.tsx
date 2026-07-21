@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { TOOLS, toolUrl } from '@/lib/site'
+import { popularPairsFor, convert, fmtConv } from '@/lib/conversions'
 import ToolShell, { type Faq } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
@@ -72,6 +74,16 @@ export default function Page() {
             the two everyday scales meet at −40°, and body temperature sits near 37°C or 98.6°F. This
             converter applies all of these exactly, so you never have to trust mental arithmetic.
           </p>
+
+          <h2>Popular temperature conversions</h2>
+          <div className="not-prose grid sm:grid-cols-2 gap-2">
+            {popularPairsFor('temperature').map(p => (
+              <Link key={p.slug} href={`/convert/${p.slug}`} className="px-3 py-2 rounded-lg border border-line hover:border-brand hover:bg-surface transition-colors text-sm">
+                <span className="font-medium text-ink">{p.from.titleName} to {p.to.titleName}</span>
+                <span className="text-muted block text-xs mt-0.5">1 {p.from.symbol} = {fmtConv(convert(1, p.from, p.to))} {p.to.symbol}</span>
+              </Link>
+            ))}
+          </div>
         </>
       }
     >

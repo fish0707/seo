@@ -13,6 +13,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/convert" className="hover:text-ink transition-colors">Unit Converters</Link>
           <Link href="/about" className="hover:text-ink transition-colors">About</Link>
           <Link href="/contact" className="hover:text-ink transition-colors">Contact</Link>
           <Link href="/privacy" className="hover:text-ink transition-colors">Privacy Policy</Link>
