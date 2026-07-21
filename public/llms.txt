@@ -108,6 +108,25 @@ detailed FAQ.
   distance/100 * L/100km. Imperial: fuel = distance / mpg. cost = fuel *
   price; also cost per km/mile.
 
+- Mortgage Calculator: /mortgage-calculator
+  Full monthly home payment from price, down payment, rate, and term.
+  Principal & interest via the amortization formula on (price - down),
+  plus monthly property tax and home insurance (PITI).
+
+- Savings Goal Calculator: /savings-goal-calculator
+  Required monthly contribution to reach a savings goal by a target date,
+  accounting for a starting balance and interest. Grows the current
+  balance, then solves the future-value-of-a-series formula for the gap.
+
+- Length Converter: /length-converter
+  Convert length/distance between mm, cm, m, km, in, ft, yd, and mi. All
+  units defined exactly in metres (1 in = 0.0254 m, 1 mi = 1609.344 m).
+
+- Ovulation Calculator: /ovulation-calculator
+  Estimated ovulation day (next period minus 14 days), fertile window
+  (ovulation -5 to +1 days), and next period date, from the last period
+  date and cycle length.
+
 ## Other pages
 
 - About: /about — how the tools work and the accuracy principles

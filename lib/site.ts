@@ -197,6 +197,42 @@ export const TOOLS: Tool[] = [
     keywords:
       'fuel cost calculator, gas cost calculator, trip fuel cost, cost of driving, petrol cost calculator, fuel consumption cost',
   },
+  {
+    slug: 'mortgage-calculator',
+    name: 'Mortgage Calculator',
+    shortName: 'Mortgage',
+    description:
+      'Estimate your full monthly mortgage payment from the home price, down payment, interest rate, and term — including property tax and home insurance.',
+    keywords:
+      'mortgage calculator, monthly mortgage payment, home loan calculator, mortgage with taxes and insurance, down payment calculator, house payment',
+  },
+  {
+    slug: 'savings-goal-calculator',
+    name: 'Savings Goal Calculator',
+    shortName: 'Savings Goal',
+    description:
+      'Find out how much you need to save each month to reach a savings goal by a target date, taking your starting balance and interest into account.',
+    keywords:
+      'savings goal calculator, how much to save per month, monthly savings calculator, reach savings target, savings plan calculator',
+  },
+  {
+    slug: 'length-converter',
+    name: 'Length Converter',
+    shortName: 'Length',
+    description:
+      'Convert lengths and distances between millimetres, centimetres, metres, kilometres, inches, feet, yards, and miles instantly.',
+    keywords:
+      'length converter, distance converter, cm to inches, feet to meters, miles to km, metric to imperial length, unit converter',
+  },
+  {
+    slug: 'ovulation-calculator',
+    name: 'Ovulation Calculator',
+    shortName: 'Ovulation',
+    description:
+      'Estimate your most fertile days, ovulation date, and next period from the first day of your last period and your average cycle length.',
+    keywords:
+      'ovulation calculator, fertile window calculator, fertility calculator, when do i ovulate, ovulation day, most fertile days',
+  },
 ]
 
 export const toolUrl = (slug: string) => `${SITE_URL}/${slug}`
