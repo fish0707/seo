@@ -27,9 +27,18 @@ export default function PrivacyPage() {
 
         <h2>Analytics</h2>
         <p>
-          We use privacy-respecting, aggregate analytics to understand which tools are used and how
-          often (for example, page view counts and country-level location derived from anonymized
-          data). This data cannot be used to identify you.
+          We use{' '}
+          <a href="https://vercel.com/docs/analytics/privacy-policy" className="text-brand hover:underline" target="_blank" rel="noopener noreferrer">
+            Vercel Analytics
+          </a>{' '}
+          to understand which tools are used and how often. It is cookieless: it sets no tracking
+          cookies, does not store any identifier on your device, and does not build a profile of you
+          across sites or visits.
+        </p>
+        <p>
+          The only data it records is aggregate and anonymous — for example page view counts, the
+          referring site, and coarse country and device-type information. None of it can be used to
+          identify you, and it never includes anything you type into a calculator.
         </p>
 
         <h2>Advertising and cookies</h2>

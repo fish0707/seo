@@ -35,6 +35,7 @@ npm run dev
 - **程式化長尾頁**：`lib/conversions.ts` 是單位資料的唯一來源，`app/convert/[slug]/` 依此自動生成 112 個 `/convert/<from>-to-<to>` 頁（cm-to-inches 等），搶高搜尋量長尾字。新增單位只要改 `lib/conversions.ts`。
 - **IndexNow**：`scripts/indexnow.mjs` 在 `postbuild` 自動跑，於 Vercel production 部署時通知 Bing/DuckDuckGo/Seznam 收錄。金鑰檔在 `public/6563d2b1301b566a4f89d42d74e5c21a.txt`。
 - **動態 OG 圖**：`app/og/route.tsx` 依 `?title=` 產生分享預覽圖。
+- **Vercel Analytics**：`app/layout.tsx` 掛載 `<Analytics />`（cookieless，隱私政策已據實揭露）。需到 Vercel 專案 → Analytics 分頁按 Enable 才會開始收集數據。
 - 推廣素材（目錄站提交清單、文案）見 `PROMOTION.md`。
 
 ## AdSense 上線清單
