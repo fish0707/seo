@@ -4,7 +4,8 @@ import { ChevronRight } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { CATEGORIES, CONVERSION_PAIRS, convert, fmtConv } from '@/lib/conversions'
+import { CATEGORIES, CONVERSION_PAIRS } from '@/lib/conversions'
+import ConversionLinks from '@/components/ConversionLinks'
 
 export const metadata: Metadata = {
   title: 'Unit Converters — Length, Weight, Speed & Temperature',
@@ -36,35 +37,17 @@ export default function ConvertHub() {
           temperature. Every page includes a live converter, a conversion table, and the formula.
         </p>
 
-        {CATEGORIES.map(cat => {
-          const pairs = cat.units.flatMap(from =>
-            cat.units.filter(to => to !== from).map(to => ({ from, to })),
-          )
-          return (
-            <section key={cat.key} className="mb-10">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold">{cat.name}</h2>
-                <Link href={`/${cat.toolSlug}`} className="text-sm text-brand hover:underline">
-                  Full {cat.toolName} →
-                </Link>
-              </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                {pairs.map(({ from, to }) => (
-                  <Link
-                    key={`${from.slug}-${to.slug}`}
-                    href={`/convert/${from.slug}-to-${to.slug}`}
-                    className="px-3 py-2 rounded-lg border border-line hover:border-brand hover:bg-surface transition-colors text-sm"
-                  >
-                    <span className="font-medium">{from.titleName} → {to.titleName}</span>
-                    <span className="text-muted block text-xs mt-0.5">
-                      1 {from.symbol} = {fmtConv(convert(1, from, to))} {to.symbol}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          )
-        })}
+        {CATEGORIES.map(cat => (
+          <section key={cat.key} className="mb-10">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">{cat.name}</h2>
+              <Link href={`/${cat.toolSlug}`} className="text-sm text-brand hover:underline">
+                Full {cat.toolName} →
+              </Link>
+            </div>
+            <ConversionLinks category={cat.key} />
+          </section>
+        ))}
       </main>
       <Footer />
     </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { TOOLS, toolUrl } from '@/lib/site'
-import { popularPairsFor, convert, fmtConv } from '@/lib/conversions'
+import ConversionLinks from '@/components/ConversionLinks'
 import ToolShell, { type Faq } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
@@ -76,15 +75,8 @@ export default function Page() {
             calculation happens on your device.
           </p>
 
-          <h2>Popular speed conversions</h2>
-          <div className="not-prose grid sm:grid-cols-2 gap-2">
-            {popularPairsFor('speed').map(p => (
-              <Link key={p.slug} href={`/convert/${p.slug}`} className="px-3 py-2 rounded-lg border border-line hover:border-brand hover:bg-surface transition-colors text-sm">
-                <span className="font-medium text-ink">{p.from.titleName} to {p.to.titleName}</span>
-                <span className="text-muted block text-xs mt-0.5">1 {p.from.symbol} = {fmtConv(convert(1, p.from, p.to))} {p.to.symbol}</span>
-              </Link>
-            ))}
-          </div>
+          <h2>All speed conversions</h2>
+          <ConversionLinks category="speed" />
         </>
       }
     >

@@ -7,8 +7,9 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import {
   CONVERSION_PAIRS, getPair, reversePair, convert, linearFactor, pairFormula, pairH1,
-  fmtConv, popularPairsFor, type ConvPair,
+  fmtConv, popularPairsFor, pairsFromUnit, type ConvPair,
 } from '@/lib/conversions'
+import { PairLink } from '@/components/ConversionLinks'
 import MiniConverter from './MiniConverter'
 
 export function generateStaticParams() {
@@ -69,7 +70,12 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   const rows = tableRows(p)
   const rev = reversePair(p)
-  const related = popularPairsFor(p.category.key).filter(r => r.slug !== p.slug && r.slug !== rev.slug).slice(0, 6)
+  // Sibling pairs sharing this source unit — the main internal-link mesh, so
+  // every pair page (not just the hand-picked popular ones) has many entries.
+  const siblings = pairsFromUnit(p.category.key, p.from.slug).filter(s => s.slug !== p.slug)
+  const related = popularPairsFor(p.category.key)
+    .filter(r => r.slug !== p.slug && r.slug !== rev.slug && !siblings.some(s => s.slug === r.slug))
+    .slice(0, 4)
   const fq = faqs(p)
   const factor = linearFactor(p)
   const example = convert(p.category.exampleValue, p.from, p.to)
@@ -176,6 +182,17 @@ export default function Page({ params }: { params: { slug: string } }) {
             ))}
           </div>
         </section>
+
+        {siblings.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold mb-4">Convert {p.from.plural} to other units</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              {siblings.map(s => (
+                <PairLink key={s.slug} pair={s} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="mt-10">

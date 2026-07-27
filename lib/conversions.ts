@@ -190,3 +190,12 @@ export const POPULAR_SLUGS: Record<CategoryKey, string[]> = {
 
 export const popularPairsFor = (key: CategoryKey) =>
   POPULAR_SLUGS[key].map(s => getPair(s)!).filter(Boolean)
+
+// All pairs in a category, and all pairs sharing a source unit. Used to build a
+// dense internal-link mesh so every pair page has several contextual entry
+// points rather than depending on the hub alone.
+export const pairsForCategory = (key: CategoryKey) =>
+  CONVERSION_PAIRS.filter(p => p.category.key === key)
+
+export const pairsFromUnit = (key: CategoryKey, unitSlug: string) =>
+  CONVERSION_PAIRS.filter(p => p.category.key === key && p.from.slug === unitSlug)
