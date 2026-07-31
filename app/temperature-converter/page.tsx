@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ConversionLinks from '@/components/ConversionLinks'
 import ToolShell, { type Faq } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
@@ -74,8 +73,6 @@ export default function Page() {
             converter applies all of these exactly, so you never have to trust mental arithmetic.
           </p>
 
-          <h2>All temperature conversions</h2>
-          <ConversionLinks category="temperature" />
         </>
       }
     >

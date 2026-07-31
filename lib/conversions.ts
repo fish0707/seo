@@ -1,6 +1,5 @@
 // ── Central unit-conversion data ──
-// Single source of truth for the four converter tools and the
-// programmatic /convert/[slug] long-tail pages.
+// Single source of truth for the four converter tools.
 
 export type CategoryKey = 'length' | 'weight' | 'speed' | 'temperature'
 
@@ -121,41 +120,7 @@ export const CATEGORIES: ConvCategory[] = [
 
 export const getCategory = (key: CategoryKey) => CATEGORIES.find(c => c.key === key)!
 
-export type ConvPair = { slug: string; category: ConvCategory; from: ConvUnit; to: ConvUnit }
-
-export const CONVERSION_PAIRS: ConvPair[] = CATEGORIES.flatMap(category =>
-  category.units.flatMap(from =>
-    category.units
-      .filter(to => to !== from)
-      .map(to => ({ slug: `${from.slug}-to-${to.slug}`, category, from, to })),
-  ),
-)
-
-export const getPair = (slug: string) => CONVERSION_PAIRS.find(p => p.slug === slug)
-
-export const reversePair = (p: ConvPair) => getPair(`${p.to.slug}-to-${p.from.slug}`)!
-
 export const convert = (v: number, from: ConvUnit, to: ConvUnit) => to.fromBase(from.toBase(v))
-
-// Linear conversion factor from → to (null for temperature).
-export const linearFactor = (p: ConvPair) =>
-  p.from.factor != null && p.to.factor != null ? p.from.factor / p.to.factor : null
-
-const TEMP_FORMULAS: Record<string, string> = {
-  'celsius-to-fahrenheit': '°F = °C × 9/5 + 32',
-  'fahrenheit-to-celsius': '°C = (°F − 32) × 5/9',
-  'celsius-to-kelvin': 'K = °C + 273.15',
-  'kelvin-to-celsius': '°C = K − 273.15',
-  'fahrenheit-to-kelvin': 'K = (°F − 32) × 5/9 + 273.15',
-  'kelvin-to-fahrenheit': '°F = (K − 273.15) × 9/5 + 32',
-}
-
-export const pairFormula = (p: ConvPair) => {
-  const f = linearFactor(p)
-  return f != null ? `${p.to.symbol} = ${p.from.symbol} × ${fmtConv(f)}` : TEMP_FORMULAS[p.slug]
-}
-
-export const pairH1 = (p: ConvPair) => `${p.from.titleName} to ${p.to.titleName} Converter`
 
 export const fmtConv = (n: number) => {
   if (!Number.isFinite(n)) return '—'
@@ -166,36 +131,3 @@ export const fmtConv = (n: number) => {
 export const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 
 export const unitLabel = (u: ConvUnit) => `${capitalize(u.plural)} (${u.symbol})`
-
-// Hand-picked high-search-volume pairs, used for internal linking.
-export const POPULAR_SLUGS: Record<CategoryKey, string[]> = {
-  length: [
-    'cm-to-inches', 'inches-to-cm', 'meters-to-feet', 'feet-to-meters',
-    'km-to-miles', 'miles-to-km', 'mm-to-inches', 'inches-to-mm',
-    'yards-to-meters', 'cm-to-feet',
-  ],
-  weight: [
-    'kg-to-lbs', 'lbs-to-kg', 'grams-to-ounces', 'ounces-to-grams',
-    'stone-to-kg', 'kg-to-stone', 'lbs-to-stone', 'mg-to-grams',
-  ],
-  speed: [
-    'kmh-to-mph', 'mph-to-kmh', 'meters-per-second-to-kmh', 'kmh-to-meters-per-second',
-    'knots-to-mph', 'mph-to-knots', 'knots-to-kmh', 'feet-per-second-to-mph',
-  ],
-  temperature: [
-    'celsius-to-fahrenheit', 'fahrenheit-to-celsius', 'celsius-to-kelvin',
-    'kelvin-to-celsius', 'fahrenheit-to-kelvin', 'kelvin-to-fahrenheit',
-  ],
-}
-
-export const popularPairsFor = (key: CategoryKey) =>
-  POPULAR_SLUGS[key].map(s => getPair(s)!).filter(Boolean)
-
-// All pairs in a category, and all pairs sharing a source unit. Used to build a
-// dense internal-link mesh so every pair page has several contextual entry
-// points rather than depending on the hub alone.
-export const pairsForCategory = (key: CategoryKey) =>
-  CONVERSION_PAIRS.filter(p => p.category.key === key)
-
-export const pairsFromUnit = (key: CategoryKey, unitSlug: string) =>
-  CONVERSION_PAIRS.filter(p => p.category.key === key && p.from.slug === unitSlug)

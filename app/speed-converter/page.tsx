@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ConversionLinks from '@/components/ConversionLinks'
 import ToolShell, { type Faq } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
@@ -75,8 +74,6 @@ export default function Page() {
             calculation happens on your device.
           </p>
 
-          <h2>All speed conversions</h2>
-          <ConversionLinks category="speed" />
         </>
       }
     >
