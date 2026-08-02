@@ -7,9 +7,11 @@
     --ink-2: #4A5450;
     --ink-3: #78837E;
     --rule: #C9D0CA;
-    --line: #1F5FD1;        /* X 線 / 正確路徑 */
+    --line: #1F5FD1;
     --line-soft: #DDE6F7;
-    --warn: #B87309;        /* 貓耳 / 危險 */
+    --rail: #3E9142;
+    --rail-soft: #DCEBDC;
+    --warn: #B87309;
     --warn-soft: #F6E9CE;
     --field: #D6DCD6;
     --field-2: #C3CBC4;
@@ -22,141 +24,82 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #101416;
-      --paper-2: #171D1F;
-      --ink: #E6EBE7;
-      --ink-2: #A3AFAA;
-      --ink-3: #74807B;
-      --rule: #2A3335;
-      --line: #6699F5;
-      --line-soft: #17233A;
-      --warn: #E0A64B;
-      --warn-soft: #33280F;
-      --field: #1D2426;
-      --field-2: #263032;
+      --paper: #101416; --paper-2: #171D1F; --ink: #E6EBE7; --ink-2: #A3AFAA;
+      --ink-3: #74807B; --rule: #2A3335; --line: #6699F5; --line-soft: #17233A;
+      --rail: #5FBF64; --rail-soft: #16281A;
+      --warn: #E0A64B; --warn-soft: #33280F; --field: #1D2426; --field-2: #263032;
     }
   }
   :root[data-theme="dark"] {
     --paper: #101416; --paper-2: #171D1F; --ink: #E6EBE7; --ink-2: #A3AFAA;
     --ink-3: #74807B; --rule: #2A3335; --line: #6699F5; --line-soft: #17233A;
+    --rail: #5FBF64; --rail-soft: #16281A;
     --warn: #E0A64B; --warn-soft: #33280F; --field: #1D2426; --field-2: #263032;
   }
   :root[data-theme="light"] {
     --paper: #F0F2EE; --paper-2: #E4E8E2; --ink: #14181A; --ink-2: #4A5450;
     --ink-3: #78837E; --rule: #C9D0CA; --line: #1F5FD1; --line-soft: #DDE6F7;
+    --rail: #3E9142; --rail-soft: #DCEBDC;
     --warn: #B87309; --warn-soft: #F6E9CE; --field: #D6DCD6; --field-2: #C3CBC4;
   }
 
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--f-body);
-    font-size: 17px;
-    line-height: 1.75;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--f-body); font-size: 17px; line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 78ch; margin: 0 auto; padding: 0 var(--pad) 6rem; }
 
-  /* ---------- type ---------- */
-  h1 {
-    font-size: clamp(2.4rem, 7vw, 4.1rem);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
-    font-weight: 800;
-    text-wrap: balance;
-    margin: 0;
-  }
-  h2 {
-    font-size: clamp(1.45rem, 3.6vw, 2rem);
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    font-weight: 800;
-    text-wrap: balance;
-    margin: 0;
-  }
-  h3 {
-    font-size: 1.08rem;
-    font-weight: 700;
-    letter-spacing: -0.005em;
-    margin: 0;
-  }
+  h1 { font-size: clamp(2.4rem, 7vw, 4.1rem); line-height: 1.02; letter-spacing: -0.03em; font-weight: 800; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(1.45rem, 3.6vw, 2rem); line-height: 1.25; letter-spacing: -0.02em; font-weight: 800; text-wrap: balance; margin: 0; }
+  h3 { font-size: 1.08rem; font-weight: 700; margin: 0; }
   p { margin: 0; max-width: var(--measure); }
-  strong { font-weight: 700; }
   a { color: var(--line); text-underline-offset: 3px; }
   a:focus-visible, summary:focus-visible { outline: 2px solid var(--line); outline-offset: 3px; border-radius: 2px; }
 
-  .eyebrow {
-    font-family: var(--f-data);
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+  .eyebrow { font-family: var(--f-data); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); }
   .lede { font-size: 1.12rem; color: var(--ink-2); max-width: 62ch; }
   .note { font-size: 0.9rem; color: var(--ink-3); max-width: 62ch; }
 
-  /* ---------- masthead ---------- */
-  header.mast {
-    display: flex; flex-direction: column; gap: 1.5rem;
-    padding: clamp(3rem, 9vw, 6rem) 0 2.5rem;
-    border-bottom: 2px solid var(--ink);
-  }
-  .mast-meta {
-    display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
-    font-family: var(--f-data); font-size: 0.75rem;
-    letter-spacing: 0.1em; color: var(--ink-3);
-    text-transform: uppercase;
-  }
-  .vars { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 0.5rem; }
+  header.mast { display: flex; flex-direction: column; gap: 1.5rem; padding: clamp(3rem, 9vw, 6rem) 0 2.5rem; border-bottom: 2px solid var(--ink); }
+  .mast-meta { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; font-family: var(--f-data); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
+
+  .rev { border: 1px solid var(--warn); background: var(--warn-soft); padding: 1rem 1.15rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .rev .t { font-family: var(--f-data); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--warn); }
+  .rev p { font-size: 0.93rem; }
+
+  .vars { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
   .vars > div { background: var(--paper); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.3rem; }
   .vars .k { font-family: var(--f-data); font-size: 0.7rem; letter-spacing: 0.16em; color: var(--line); text-transform: uppercase; }
   .vars .v { font-weight: 700; font-size: 1.05rem; }
   .vars .d { font-size: 0.85rem; color: var(--ink-2); line-height: 1.5; }
 
-  /* ---------- sections ---------- */
   section { padding-top: 3.75rem; display: flex; flex-direction: column; gap: 1.15rem; }
   .sec-head { display: flex; gap: 1.1rem; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 1.1rem; }
-  .sec-num {
-    font-family: var(--f-data); font-size: 0.78rem; font-weight: 600;
-    color: var(--line); letter-spacing: 0.1em; padding-top: 0.35rem; flex: none;
-  }
+  .sec-num { font-family: var(--f-data); font-size: 0.78rem; font-weight: 600; color: var(--line); letter-spacing: 0.1em; padding-top: 0.35rem; flex: none; }
   .sub { margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.7rem; }
 
   ul, ol { margin: 0; padding-left: 1.25rem; max-width: var(--measure); display: flex; flex-direction: column; gap: 0.45rem; }
   li::marker { color: var(--ink-3); }
 
-  /* ---------- figure ---------- */
   figure { margin: 0.75rem 0 0; border: 1px solid var(--rule); background: var(--paper-2); }
   figure svg { display: block; width: 100%; height: auto; }
-  figcaption {
-    border-top: 1px solid var(--rule);
-    padding: 0.7rem 1rem;
-    font-family: var(--f-data);
-    font-size: 0.75rem; line-height: 1.6; color: var(--ink-3);
-    letter-spacing: 0.02em;
-  }
+  figcaption { border-top: 1px solid var(--rule); padding: 0.7rem 1rem; font-family: var(--f-data); font-size: 0.75rem; line-height: 1.6; color: var(--ink-3); }
   figcaption b { color: var(--ink-2); font-weight: 600; }
 
-  /* ---------- callouts ---------- */
   .box { border-left: 3px solid var(--line); background: var(--line-soft); padding: 1rem 1.15rem; display: flex; flex-direction: column; gap: 0.4rem; }
   .box.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .box.rail { border-left-color: var(--rail); background: var(--rail-soft); }
   .box .t { font-family: var(--f-data); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); }
-  .box p { font-size: 0.95rem; }
+  .box p, .box ul { font-size: 0.95rem; }
 
-  /* ---------- tables ---------- */
   .scroll { overflow-x: auto; border: 1px solid var(--rule); }
   table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: 0.92rem; }
   th, td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
   thead th { font-family: var(--f-data); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); background: var(--paper-2); white-space: nowrap; }
   tbody tr:last-child td { border-bottom: 0; }
   td.num, th.num { font-family: var(--f-data); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  td.tag { white-space: nowrap; }
 
-  .pill { font-family: var(--f-data); font-size: 0.7rem; letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border: 1px solid currentColor; border-radius: 999px; }
-  .pill.ok { color: var(--line); }
-  .pill.no { color: var(--warn); }
-
-  /* ---------- week cards ---------- */
   .weeks { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
   .week { background: var(--paper); padding: 1.25rem 1.3rem; display: flex; flex-direction: column; gap: 0.7rem; }
   .week-top { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
@@ -172,40 +115,42 @@
 
   footer { margin-top: 4rem; border-top: 2px solid var(--ink); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
   footer ul { font-size: 0.88rem; color: var(--ink-2); gap: 0.35rem; }
-
-  @media (prefers-reduced-motion: no-preference) {
-    a { transition: color 120ms ease; }
-  }
 </style>
 
 <div class="wrap">
 
 <header class="mast">
-  <div class="eyebrow">Beyblade X — 發射技術訓練手冊 / 30 DAYS</div>
+  <div class="eyebrow">Beyblade X — 發射技術訓練手冊 / 30 DAYS / REV.2</div>
   <h1>發射不是感覺，<br>是三個可以分開練的變數</h1>
   <p class="lede">
-    大多數人卡在「有時候打得很好，但不知道為什麼」。原因是把<strong>傾角</strong>、<strong>落點</strong>、<strong>抽速</strong>三件事混在一起練——三個變數同時亂動，練一千次也歸納不出規律。這份手冊把它們拆開，一週鎖一個，第四週再合起來。
+    大多數人卡在「有時候打得很好，但不知道為什麼」。原因是把<strong>傾角</strong>、<strong>站位與落點</strong>、<strong>抽速</strong>三件事混在一起練——三個變數同時亂動，練一千次也歸納不出規律。這份手冊把它們拆開，一週鎖一個，第四週再合起來。
   </p>
   <div class="mast-meta">
     <span>目標：逆軌 · 躲貓耳 · 抽速</span>
     <span>週期：4 週 / 每日 20–30 分鐘</span>
     <span>驗收：可量化</span>
   </div>
+
+  <div class="rev">
+    <span class="t">Rev.2 — 修正紀錄</span>
+    <p><strong>Rev.1 有兩個錯誤，已修正：</strong>（一）我把「貓耳」誤認為盤面角落的出局口袋。正確：貓耳是綠色 X 線上那個雙尖角結構，也就是 <strong>X 線的入口</strong>。（二）我把「逆軌」誤解成「相對於對手的反向」。正確：逆軌是<strong>讓陀螺整體反方向繞盤</strong>，跟對手站哪一側無關。第 01、04、05 節已全部重寫。</p>
+  </div>
+
   <div class="vars">
     <div>
-      <span class="k">Var 1 — 傾角</span>
-      <span class="v">發射器的傾斜度</span>
-      <span class="d">決定陀螺是垂直落下、爬上 X 線，還是直接撞牆自滅。</span>
-    </div>
-    <div>
-      <span class="k">Var 2 — 位置</span>
-      <span class="v">你站在盤的哪一側</span>
-      <span class="d">決定你吃到 X 線的入口段還是出口段，也決定能不能打逆軌。</span>
-    </div>
-    <div>
-      <span class="k">Var 3 — 抽速</span>
+      <span class="k">Var 1 — 抽速</span>
       <span class="v">拉繩的瞬間加速度</span>
       <span class="d">不是「用多大力」，是「手移動多快」。這兩件事在物理上相反。</span>
+    </div>
+    <div>
+      <span class="k">Var 2 — 傾角</span>
+      <span class="v">發射器的傾斜與高度</span>
+      <span class="d">決定陀螺是垂直落下、上得了貓耳，還是彈跳失控。</span>
+    </div>
+    <div>
+      <span class="k">Var 3 — 繞行方向</span>
+      <span class="v">正軌 or 逆軌</span>
+      <span class="d">決定你是被 X 線帶著跑，還是能反過來停在貓耳蓄力。</span>
     </div>
   </div>
 </header>
@@ -220,7 +165,7 @@
   <ul>
     <li><strong>量測工具</strong>——官方 App 搭配 Battle Pass 可以讀出每一發的 Shoot Power，並保留最近數十發的紀錄。沒有的話，退而求其次：固定用同一顆陀螺、同一個發射器，用手機錄影計時「空轉到停止」的秒數。</li>
     <li><strong>固定基準陀螺</strong>——練發射時<em>不要</em>換配置。找一顆中庸的右旋配置當「訓練彈」，所有數據都用它產生，換零件會污染你的數據。</li>
-    <li><strong>一本流水帳</strong>——每天記三個數字：平均抽速、最高抽速、落點命中率。手機備忘錄就好。</li>
+    <li><strong>手機慢動作</strong>——這份手冊裡幾乎每個技巧的驗收方式都是「錄下來看」。逆軌尤其如此：肉眼在 0.3 秒內判斷不了繞行方向，慢動作可以。</li>
   </ul>
 
   <div class="scroll" style="margin-top:0.5rem">
@@ -232,73 +177,83 @@
         <tr><td>小學生 blader</td><td class="num">5,000 – 8,000</td><td>還在建立姿勢與握持穩定度</td></tr>
         <tr><td>兒童平均</td><td class="num">≈ 6,500</td><td>—</td></tr>
         <tr><td>成人平均</td><td class="num">≈ 10,000</td><td>單純靠體格就能到的天花板</td></tr>
-        <tr><td>「減少失分」的實戰甜蜜點</td><td class="num">8,000 – 10,000</td><td>足以拚 Spin Finish，又不會把自己彈出場</td></tr>
+        <tr><td>減少失分的實戰甜蜜點</td><td class="num">8,000 – 10,000</td><td>足以拚 Spin Finish，又不會把自己彈出場</td></tr>
         <tr><td>日本全國大會選手上緣</td><td class="num">≈ 15,000</td><td>技術而非力量的產物</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="note">數字是量表不是分數。10,000 打得準，遠強過 14,000 亂噴——後面第 05 節會解釋為什麼高抽速有時反而是送分。</p>
+  <p class="note">數字是量表不是分數。10,000 打得準，遠強過 14,000 亂噴。</p>
 </section>
 
 <!-- ============ 01 ============ -->
 <section>
   <div class="sec-head">
     <span class="sec-num">01</span>
-    <h2>先讀懂戰鬥盤：它不是對稱的</h2>
+    <h2>先讀懂戰鬥盤：貓耳是入口，不是陷阱</h2>
   </div>
   <p>
-    Beyblade X 的極限戰鬥盤（Xtreme Stadium）最關鍵的一件事是：<strong>X 線只有一條，而且有入口端和出口端</strong>。你站的位置決定陀螺從哪一端爬上齒軌，也就決定了它能吃到多長的加速距離。日本高手圈那句「搶左邊」講的就是這件事——從 X 線入口端進場，能吃滿整段加速；從出口端進場，只剩半截，速度上限直接被砍。
+    綠色那圈是 <strong>X 線</strong>（齒軌）。圈上有一個往內凸、帶兩個尖角的結構，社群叫它<strong>貓耳</strong>——那是 <strong>X 線的入口</strong>：陀螺從這裡爬上齒軌，才吃得到 X-DASH 的加速。
+  </p>
+  <p>
+    這一點決定了後面所有戰術。貓耳既是攻擊型取得爆發速度的門，也是持久型可以停在上面<strong>逆軌蓄力</strong>的位置。也就是說，貓耳是整個盤上唯一一個「兩種打法都想搶」的座標。至於<strong>站位</strong>：實戰是站在盤的<strong>左右兩側</strong>發射，不是繞著盤隨便找角度。
   </p>
 
   <figure>
-    <svg viewBox="0 0 640 420" role="img" aria-label="極限戰鬥盤示意圖，標示 X 線入口端、出口端、兩側貓耳出局口與極限出場區">
-      <!-- field -->
-      <path d="M120 40 H520 L600 120 V300 L520 380 H120 L40 300 V120 Z"
-            fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
-      <!-- inner bowl -->
-      <path d="M150 75 H490 L565 140 V285 L490 348 H150 L75 285 V140 Z"
-            fill="none" stroke="var(--rule)" stroke-width="2" stroke-dasharray="5 6"/>
+    <svg viewBox="0 0 640 460" role="img" aria-label="戰鬥盤俯視示意圖：圓形碗、綠色 X 線齒軌、貓耳（X 線入口）雙尖角結構、左右兩側發射位">
+      <!-- outer shell -->
+      <rect x="70" y="40" width="500" height="360" rx="34" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
+      <!-- bowl -->
+      <circle cx="320" cy="220" r="166" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="2"/>
+      <circle cx="320" cy="220" r="86" fill="none" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="5 6"/>
+      <circle cx="320" cy="220" r="34" fill="var(--field-2)" stroke="var(--rule)" stroke-width="1.5"/>
 
-      <!-- X line rail along top wall -->
-      <line x1="130" y1="52" x2="510" y2="52" stroke="var(--line)" stroke-width="7" stroke-linecap="round"/>
-      <g stroke="var(--line)" stroke-width="2.5">
-        <line x1="150" y1="52" x2="150" y2="66"/><line x1="185" y1="52" x2="185" y2="66"/>
-        <line x1="220" y1="52" x2="220" y2="66"/><line x1="255" y1="52" x2="255" y2="66"/>
-        <line x1="290" y1="52" x2="290" y2="66"/><line x1="325" y1="52" x2="325" y2="66"/>
-        <line x1="360" y1="52" x2="360" y2="66"/><line x1="395" y1="52" x2="395" y2="66"/>
-        <line x1="430" y1="52" x2="430" y2="66"/><line x1="465" y1="52" x2="465" y2="66"/>
+      <!-- X line ring -->
+      <circle cx="320" cy="220" r="150" fill="none" stroke="var(--rail)" stroke-width="9"/>
+      <!-- teeth -->
+      <g stroke="var(--rail)" stroke-width="2">
+        <line x1="320" y1="61" x2="320" y2="76"/>
+        <line x1="395" y1="81" x2="388" y2="95"/>
+        <line x1="459" y1="145" x2="445" y2="152"/>
+        <line x1="479" y1="220" x2="464" y2="220"/>
+        <line x1="459" y1="295" x2="445" y2="288"/>
+        <line x1="395" y1="359" x2="388" y2="345"/>
+        <line x1="320" y1="379" x2="320" y2="364"/>
+        <line x1="245" y1="359" x2="252" y2="345"/>
+        <line x1="181" y1="295" x2="195" y2="288"/>
+        <line x1="161" y1="220" x2="176" y2="220"/>
+        <line x1="181" y1="145" x2="195" y2="152"/>
+        <line x1="245" y1="81" x2="252" y2="95"/>
       </g>
 
-      <!-- cat ears : two corner pockets -->
-      <path d="M40 300 L120 380 L120 300 Z" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="2"/>
-      <path d="M600 300 L520 380 L520 300 Z" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="2"/>
-      <!-- xtreme zone -->
-      <rect x="240" y="352" width="160" height="30" fill="var(--line-soft)" stroke="var(--line)" stroke-width="2"/>
-
-      <g font-family="ui-monospace, monospace" font-size="13" fill="var(--ink-2)">
-        <text x="140" y="88" fill="var(--line)">X 線・入口端（吃滿加速）</text>
-        <text x="392" y="88" fill="var(--ink-3)">出口端</text>
-        <text x="262" y="372" fill="var(--line)" font-size="12">極限出場區 3pt</text>
-        <text x="30" y="278" fill="var(--warn)" font-size="12">貓耳 2pt</text>
-        <text x="524" y="278" fill="var(--warn)" font-size="12">貓耳 2pt</text>
-        <text x="252" y="215" fill="var(--ink-3)" font-size="12">中央（起手落點）</text>
+      <!-- cat ear at upper-right of ring -->
+      <g transform="translate(426,114) rotate(225)">
+        <path d="M-36 2 L-19 -26 L0 -7 L19 -26 L36 2" fill="none" stroke="var(--rail)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
       </g>
+      <circle cx="426" cy="114" r="42" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <line x1="458" y1="86" x2="520" y2="60" stroke="var(--ink)" stroke-width="1.5"/>
+      <text x="470" y="52" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="var(--ink)">貓耳</text>
+      <text x="418" y="34" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--rail)">＝ X 線入口</text>
 
-      <!-- side labels -->
-      <g font-family="ui-monospace, monospace" font-size="12">
-        <text x="58" y="150" fill="var(--line)">B 側</text>
-        <text x="556" y="150" fill="var(--ink-3)">X 側</text>
-      </g>
-      <circle cx="320" cy="200" r="5" fill="var(--ink-2)"/>
+      <!-- labels -->
+      <text x="150" y="130" font-family="ui-monospace, monospace" font-size="12" fill="var(--rail)">X 線（齒軌）</text>
+      <text x="276" y="226" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">中央低速區</text>
+
+      <!-- shooter positions -->
+      <circle cx="34" cy="220" r="8" fill="var(--line)"/>
+      <text x="14" y="252" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">左側發射位</text>
+      <circle cx="606" cy="220" r="8" fill="var(--line)"/>
+      <text x="546" y="252" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">右側發射位</text>
+
+      <text x="176" y="440" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">依實物照片重繪・僅標註已確認結構</text>
     </svg>
     <figcaption>
-      <b>圖 01</b>　示意圖，非精確比例，請以你手上的戰鬥盤實物為準。要記住的只有三件事：①&nbsp;X 線是一條有方向性的齒軌；②&nbsp;角落口袋（貓耳）送對手 2 分；③&nbsp;X 線盡頭的極限出場區送對手 3 分。
+      <b>圖 01</b>　只標了三件確定的事：綠色 X 線齒軌、貓耳（X 線入口）、左右兩側的發射位。出場口與計分區的實際位置請以你手上的盤為準——手冊裡的戰術不依賴它們的座標。
     </figcaption>
   </figure>
 
-  <div class="box">
-    <span class="t">30 秒自我校正</span>
-    <p>不要背方向。拿你的訓練彈，從盤的一側平射一發，用眼睛盯著它爬上 X 線後是往左跑還是往右跑。換到另一側再打一發。這兩發的差異，就是你之後所有「逆軌」判斷的基準。右旋陀螺自轉是順時針，但在盤裡繞行的方向是逆時針——親眼確認一次，比記十句口訣有用。</p>
+  <div class="box rail">
+    <span class="t">計分結構（決定所有取捨）</span>
+    <p>轉贏對手 = <strong>Spin Finish 1 分</strong>；把對手打出角落口袋 = <strong>Over Finish 2 分</strong>；讓對手爆裂 = <strong>Burst Finish 2 分</strong>；用 X-DASH 把對手撞進極限出場區 = <strong>Xtreme Finish 3 分</strong>。所以「我沒贏但也沒失分」的價值，遠高於「打了一發超猛的但自己飛出去」。</p>
   </div>
 </section>
 
@@ -317,34 +272,29 @@
     <ul>
       <li><strong>下半身</strong>：雙腳站定，重心微前，不要墊腳。</li>
       <li><strong>核心</strong>：腹部保持輕度張力，抽的瞬間<em>轉腰</em>。這一下旋轉是主引擎。</li>
-      <li><strong>非慣用手（持發射器的手）</strong>：這隻手要<strong>很緊</strong>。它的工作是當一個不會動的地基——發射器一晃，角度就跑了。</li>
+      <li><strong>非慣用手（持發射器的手）</strong>：這隻手要<strong>很緊</strong>。它的工作是當一個不會動的地基——發射器一晃，落點就跑了。</li>
       <li><strong>慣用手（拉繩的手）</strong>：這隻手要<strong>很鬆</strong>。放鬆才能瞬間加速。握死＝自己踩自己煞車。</li>
-      <li><strong>路徑</strong>：手腕與手肘的多餘動作降到最低，讓繩子沿著<em>發射器的軸線、走最短直線</em>被抽出。手臂整條隨著轉腰一起走直線。</li>
+      <li><strong>路徑</strong>：手腕與手肘的多餘動作降到最低，讓繩子沿著<em>發射器的軸線、走最短直線</em>被抽出。</li>
     </ul>
   </div>
 
   <figure>
     <svg viewBox="0 0 640 300" role="img" aria-label="抽繩動力鏈示意：固定手、拉繩手、直線路徑與偏斜路徑對比">
-      <!-- launcher body -->
       <rect x="150" y="60" width="46" height="120" rx="6" fill="var(--field-2)" stroke="var(--ink-3)" stroke-width="2"/>
       <circle cx="173" cy="205" r="26" fill="none" stroke="var(--ink-3)" stroke-width="2"/>
       <text x="173" y="211" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-3)">BEY</text>
 
-      <!-- fixed hand -->
       <rect x="132" y="92" width="82" height="40" rx="10" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
       <text x="46" y="88" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">固定手 · 用力握死</text>
 
-      <!-- correct pull -->
       <line x1="200" y1="110" x2="560" y2="110" stroke="var(--line)" stroke-width="4"/>
       <polygon points="560,110 544,102 544,118" fill="var(--line)"/>
       <text x="330" y="98" font-family="ui-monospace, monospace" font-size="13" fill="var(--line)">最短直線・放鬆・瞬間加速</text>
 
-      <!-- wrong pull -->
       <path d="M200 128 C 300 190, 400 90, 545 172" fill="none" stroke="var(--warn)" stroke-width="3" stroke-dasharray="7 6"/>
       <polygon points="548,174 530,168 534,182" fill="var(--warn)"/>
       <text x="300" y="212" font-family="ui-monospace, monospace" font-size="13" fill="var(--warn)">手腕甩、路徑彎 → 力量漏光</text>
 
-      <!-- core rotation -->
       <path d="M110 240 A 60 60 0 0 1 230 240" fill="none" stroke="var(--ink-3)" stroke-width="2.5"/>
       <polygon points="230,240 220,228 216,244" fill="var(--ink-3)"/>
       <text x="96" y="272" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-3)">轉腰：真正的動力來源</text>
@@ -357,7 +307,7 @@
   <div class="sub">
     <h3>2.2　把力氣花在「前半段」</h3>
     <p>
-      陀螺在繩子抽出約一半時就脫離發射器了。也就是說，<strong>後半段的拉扯完全不影響轉速，只在磨損你的發射器</strong>。加速度要集中在起始瞬間，而不是拉到底再硬扯——那只會讓發射器提早壽終正寢。發射器是消耗品：拉得越猛，壞得越快。
+      陀螺在繩子抽出約一半時就脫離發射器了。<strong>後半段的拉扯不影響轉速，只在磨損你的發射器</strong>。加速度要集中在起始瞬間，而不是拉到底再硬扯。發射器是消耗品：拉得越猛，壞得越快。
     </p>
   </div>
 
@@ -369,100 +319,63 @@
       <li><strong>穩定度優先於峰值</strong>：目標不是打出一發 14,000，而是讓 20 發的<em>標準差變小</em>。比賽贏在下限，不是上限。</li>
     </ol>
   </div>
-
-  <div class="box warn">
-    <span class="t">常見誤區</span>
-    <p>追求高抽速時最容易發生的三件事：發射器被扯歪（角度全毀）、陀螺彈跳過高（落點失控）、以及自己被 X 線甩進極限出場區送對手 3 分。抽速要跟第 03 節的角度同步升級，單獨衝數字是負成長。</p>
-  </div>
 </section>
 
 <!-- ============ 03 ============ -->
 <section>
   <div class="sec-head">
     <span class="sec-num">03</span>
-    <h2>發射角度：一把可以刻度化的尺</h2>
+    <h2>發射角度與高度：自己量，不要背數字</h2>
   </div>
-  <p>
-    傾角是三個變數裡最容易被忽略、卻最容易量化的一個。不管你打什麼型，先把角度變成「刻度」而不是「感覺」。以發射器與水平面的夾角為準：
-  </p>
-
-  <figure>
-    <svg viewBox="0 0 640 320" role="img" aria-label="發射器傾角刻度示意，0度、5至10度、15至30度、45度以上四段">
-      <line x1="70" y1="250" x2="600" y2="250" stroke="var(--rule)" stroke-width="2"/>
-      <circle cx="70" cy="250" r="6" fill="var(--ink)"/>
-
-      <!-- 0 deg -->
-      <line x1="70" y1="250" x2="70" y2="70" stroke="var(--ink-3)" stroke-width="3"/>
-      <text x="46" y="56" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-3)">0°</text>
-
-      <!-- 5-10 -->
-      <line x1="70" y1="250" x2="115" y2="76" stroke="var(--ink-2)" stroke-width="3"/>
-      <!-- 15-30 -->
-      <line x1="70" y1="250" x2="196" y2="92" stroke="var(--line)" stroke-width="4"/>
-      <!-- 45+ -->
-      <line x1="70" y1="250" x2="310" y2="140" stroke="var(--warn)" stroke-width="3" stroke-dasharray="8 6"/>
-
-      <g font-family="ui-monospace, monospace" font-size="13">
-        <text x="126" y="72" fill="var(--ink-2)">5–10° 　緩慢前行 · 中央持久</text>
-        <text x="208" y="92" fill="var(--line)">15–30°　爬上 X 線 · X-DASH 觸發帶</text>
-        <text x="322" y="140" fill="var(--warn)">45°+ 　撞牆／自爆／自己出場</text>
-        <text x="94" y="270" fill="var(--ink-3)">0° 垂直落 · 幾乎不橫移 · 續戰型起手</text>
-      </g>
-    </svg>
-    <figcaption>
-      <b>圖 03</b>　角度帶對應的行為。多數人打不出 X-DASH，不是抽速不夠，而是傾角只有 5–8°，陀螺根本沒爬到齒軌高度。
-    </figcaption>
-  </figure>
-
-  <div class="scroll">
-    <table>
-      <thead>
-        <tr><th>傾角</th><th>陀螺行為</th><th>用途</th><th class="num">風險</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="num">0°（垂直落）</td><td>幾乎不橫移，落下即定點自轉</td><td>持久型／防禦型起手，保命</td><td class="num">低</td></tr>
-        <tr><td class="num">5–10°</td><td>緩慢向前推進</td><td>控場、卡位、等對手先耗</td><td class="num">低</td></tr>
-        <tr><td class="num">15–30°</td><td>爬上 X 線並嚙合齒軌</td><td><strong>攻擊型主力帶</strong>，X-DASH 觸發</td><td class="num">中</td></tr>
-        <tr><td class="num">45°+</td><td>直衝壁面、彈跳失速</td><td>基本上沒有用途</td><td class="num">高（自滅）</td></tr>
-      </tbody>
-    </table>
+  <div class="box warn">
+    <span class="t">先講一個矛盾</span>
+    <p>網路上關於「怎樣才上得了 X 線」的說法互相衝突：有的說要斜射 15–30°，有的說<strong>水平發射、從距盤面 20 公分以內的高度打，反而更容易觸發 X Dash</strong>。我沒辦法替你裁決——不同軸心、不同盤、不同抽速，答案本來就不一樣。所以這一節不給你數字，給你一套<strong>找出你自己數字</strong>的流程。</p>
   </div>
 
   <div class="sub">
-    <h3>3.1　左右傾：真正控制落點的那一顆旋鈕</h3>
-    <p>
-      前後傾角決定「爬不爬得上 X 線」，<strong>左右傾則決定陀螺落地後往哪裡走</strong>。基本法則（以右旋、正面朝盤為準）：
-    </p>
+    <h3>3.1　三格校正法（一次做完，用一個月）</h3>
+    <p>用你的訓練彈，只改一個變數，每格 15 發，記「有沒有從貓耳上到 X 線」。</p>
+    <ol>
+      <li><strong>先固定高度</strong>：發射器底部距盤面約 15–20 公分。抽速固定在你的舒適值（約 8 成）。</li>
+      <li><strong>掃傾角</strong>：水平（0°）15 發 → 約 10° 15 發 → 約 20° 15 發 → 約 30° 15 發。每格記上軌次數。</li>
+      <li><strong>掃高度</strong>：用上一步命中率最高的傾角，改試 10 公分 / 20 公分 / 30 公分，各 15 發。</li>
+      <li><strong>寫下你的組合</strong>：例如「水平、18 公分、抽速 8 成 → 上軌 12/15」。這組數字就是你之後所有練習的起點。</li>
+    </ol>
+  </div>
+
+  <div class="sub">
+    <h3>3.2　左右傾：控制落點的那顆旋鈕</h3>
+    <p>前後傾角決定「上不上得了軌」，<strong>左右傾決定陀螺落地後往哪走</strong>。以右旋、面向盤面為準的基本法則：</p>
     <ul>
-      <li><strong>向右傾</strong>　→　陀螺往前方跑，離你而去，容易上 X 線衝擊對手。</li>
-      <li><strong>向左傾</strong>　→　陀螺被拉回射手側，留在自己這半邊，適合躲、適合續力。</li>
+      <li><strong>向右傾</strong>　→　陀螺往前方跑，離你而去。</li>
+      <li><strong>向左傾</strong>　→　陀螺被拉回射手側，留在自己這半邊。</li>
     </ul>
-    <p>那些「憑感覺就打得很準」的人，只是無意識地在用這條法則。一旦你把它變成有意識的操作，就能每次打進指定的區域。</p>
+    <p>那些「憑感覺就打得很準」的人，只是無意識地在用這條法則。把它變成有意識的操作，你才能每次打進指定區域——這是第 04、05 節兩個技巧的共同前置技能。</p>
   </div>
 
   <figure>
     <svg viewBox="0 0 640 300" role="img" aria-label="左傾與右傾造成的落點差異俯視圖">
-      <!-- stadium outline -->
-      <path d="M110 30 H530 L600 100 V210 L530 275 H110 L40 210 V100 Z" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
-      <line x1="120" y1="42" x2="520" y2="42" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
-      <text x="392" y="66" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">X 線</text>
+      <rect x="70" y="20" width="500" height="250" rx="30" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
+      <circle cx="320" cy="145" r="118" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="2"/>
+      <circle cx="320" cy="145" r="106" fill="none" stroke="var(--rail)" stroke-width="7"/>
+      <g transform="translate(395,70) rotate(225)">
+        <path d="M-26 2 L-14 -19 L0 -5 L14 -19 L26 2" fill="none" stroke="var(--rail)" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </g>
+      <text x="404" y="46" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--rail)">貓耳</text>
 
-      <!-- shooter -->
-      <circle cx="320" cy="292" r="7" fill="var(--ink)"/>
-      <text x="336" y="296" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-2)">射手</text>
+      <circle cx="34" cy="145" r="7" fill="var(--ink)"/>
+      <text x="12" y="176" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-2)">射手</text>
 
-      <!-- right tilt path -->
-      <path d="M320 275 C 340 200, 380 110, 452 58" fill="none" stroke="var(--line)" stroke-width="3.5"/>
-      <polygon points="454,56 438,58 446,72" fill="var(--line)"/>
-      <text x="440" y="150" font-family="ui-monospace, monospace" font-size="13" fill="var(--line)">向右傾 → 前行上軌</text>
+      <path d="M60 145 C 140 120, 230 92, 300 60" fill="none" stroke="var(--line)" stroke-width="3.5"/>
+      <polygon points="304,58 288,54 292,70" fill="var(--line)"/>
+      <text x="188" y="48" font-family="ui-monospace, monospace" font-size="13" fill="var(--line)">向右傾 → 前行遠端</text>
 
-      <!-- left tilt path -->
-      <path d="M320 275 C 280 230, 200 220, 168 190 C 150 172, 168 152, 200 160" fill="none" stroke="var(--warn)" stroke-width="3.5" stroke-dasharray="6 5"/>
-      <polygon points="202,160 188,152 186,166" fill="var(--warn)"/>
-      <text x="96" y="132" font-family="ui-monospace, monospace" font-size="13" fill="var(--warn)">向左傾 → 拉回近端</text>
+      <path d="M60 158 C 130 190, 190 216, 262 214" fill="none" stroke="var(--warn)" stroke-width="3.5" stroke-dasharray="6 5"/>
+      <polygon points="266,214 250,206 250,222" fill="var(--warn)"/>
+      <text x="120" y="252" font-family="ui-monospace, monospace" font-size="13" fill="var(--warn)">向左傾 → 拉回近端</text>
     </svg>
     <figcaption>
-      <b>圖 04</b>　同樣的抽速、同樣的站位，只改左右傾，落點就完全不同。練習時把盤面切成四區，每一發都先宣告「我要打進哪一區」再射——命中率就是你的成績。
+      <b>圖 03</b>　同樣的抽速、同樣的站位，只改左右傾，落點就完全不同。練習時把盤面切成四區，每一發都先宣告「我要打進哪一區」再射——命中率就是你的成績。
     </figcaption>
   </figure>
 </section>
@@ -471,71 +384,61 @@
 <section>
   <div class="sec-head">
     <span class="sec-num">04</span>
-    <h2>逆軌（Reverse X-Dash）：把對手的加速變成他的破綻</h2>
+    <h2>逆軌：讓陀螺反方向繞盤</h2>
   </div>
   <p>
-    逆軌是這份手冊裡的第一個「進階技」，也是最值得優先投資的一個。它的核心邏輯不是把自己打得更快，而是<strong>讓自己在 X 線上的行進方向與對手相反</strong>，在對手正處於加速途中、還沒到達最高速時正面攔截——一次撞擊直接中斷他的極限加速。
+    <strong>逆軌不是「相對於對手的方向」，是相對於陀螺自己的自然繞行方向。</strong>陀螺落地後會因為軸尖與盤面的摩擦，自動往某一個方向繞——右旋和左旋的自然方向相反。逆軌就是用發射的初速<em>壓過</em>這個自然趨勢，逼它往反方向繞盤。
+  </p>
+  <p>
+    這件事之所以值錢，是因為整個盤的節奏都建立在「大家都往同一個方向繞」的預設上。你一旦反過來，對手的攻擊時機、預判、以及他打算搶的貓耳位置全部失準；而你自己則能走到平常走不到的位置——包括第 05 節要用的貓耳蓄力點。
   </p>
 
   <figure>
-    <svg viewBox="0 0 640 400" role="img" aria-label="逆軌攔截示意圖：對手沿 X 線加速，我方由相反端進入 X 線正面對撞">
-      <path d="M120 40 H520 L600 115 V275 L520 350 H120 L40 275 V115 Z" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
-      <line x1="130" y1="52" x2="510" y2="52" stroke="var(--line)" stroke-width="7" stroke-linecap="round"/>
-      <g stroke="var(--line)" stroke-width="2">
-        <line x1="160" y1="52" x2="160" y2="64"/><line x1="200" y1="52" x2="200" y2="64"/>
-        <line x1="240" y1="52" x2="240" y2="64"/><line x1="280" y1="52" x2="280" y2="64"/>
-        <line x1="360" y1="52" x2="360" y2="64"/><line x1="400" y1="52" x2="400" y2="64"/>
-        <line x1="440" y1="52" x2="440" y2="64"/><line x1="480" y1="52" x2="480" y2="64"/>
+    <svg viewBox="0 0 640 420" role="img" aria-label="正軌與逆軌繞盤方向對比示意圖">
+      <rect x="70" y="30" width="500" height="330" rx="32" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
+      <circle cx="320" cy="195" r="152" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="2"/>
+      <circle cx="320" cy="195" r="138" fill="none" stroke="var(--rail)" stroke-width="8"/>
+      <g transform="translate(418,97) rotate(225)">
+        <path d="M-32 2 L-17 -23 L0 -6 L17 -23 L32 2" fill="none" stroke="var(--rail)" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/>
       </g>
+      <text x="432" y="62" font-family="ui-monospace, monospace" font-size="12" fill="var(--rail)">貓耳</text>
 
-      <!-- opponent path -->
-      <path d="M470 300 C 500 220, 500 110, 460 66" fill="none" stroke="var(--warn)" stroke-width="3" stroke-dasharray="7 5"/>
-      <path d="M452 60 H 340" fill="none" stroke="var(--warn)" stroke-width="4"/>
-      <polygon points="336,60 352,52 352,68" fill="var(--warn)"/>
-      <text x="500" y="250" font-family="ui-monospace, monospace" font-size="13" fill="var(--warn)">對手</text>
-      <text x="392" y="102" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">加速中（未達頂速）</text>
+      <!-- natural orbit arc (outer, dashed) -->
+      <path d="M320 83 A 112 112 0 1 1 214 158" fill="none" stroke="var(--ink-3)" stroke-width="3" stroke-dasharray="8 6"/>
+      <polygon points="212,164 226,152 230,168" fill="var(--ink-3)"/>
+      <text x="196" y="304" font-family="ui-monospace, monospace" font-size="12.5" fill="var(--ink-3)">正軌：自然繞行方向</text>
 
-      <!-- my path -->
-      <path d="M170 300 C 140 220, 140 110, 180 66" fill="none" stroke="var(--line)" stroke-width="3"/>
-      <path d="M188 60 H 300" fill="none" stroke="var(--line)" stroke-width="4"/>
-      <polygon points="304,60 288,52 288,68" fill="var(--line)"/>
-      <text x="120" y="250" font-family="ui-monospace, monospace" font-size="13" fill="var(--line)">我方（逆軌）</text>
-      <text x="140" y="112" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">吃滿入口段</text>
+      <!-- reverse orbit arc (inner, solid) -->
+      <path d="M320 125 A 70 70 0 1 0 378 158" fill="none" stroke="var(--line)" stroke-width="3.5"/>
+      <polygon points="381,163 368,150 382,146" fill="var(--line)"/>
+      <text x="248" y="200" font-family="ui-monospace, monospace" font-size="12.5" fill="var(--line)">逆軌：反方向</text>
 
-      <!-- impact -->
-      <g>
-        <circle cx="320" cy="60" r="18" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
-        <line x1="320" y1="24" x2="320" y2="38" stroke="var(--ink)" stroke-width="2.5"/>
-        <line x1="290" y1="34" x2="300" y2="44" stroke="var(--ink)" stroke-width="2.5"/>
-        <line x1="350" y1="34" x2="340" y2="44" stroke="var(--ink)" stroke-width="2.5"/>
-      </g>
-      <text x="272" y="140" font-family="ui-monospace, monospace" font-size="13" fill="var(--ink)">正面對撞：合速度最大</text>
-
-      <!-- shooter positions -->
-      <circle cx="170" cy="330" r="6" fill="var(--line)"/>
-      <text x="96" y="352" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">你站這裡</text>
-      <circle cx="470" cy="330" r="6" fill="var(--warn)"/>
-      <text x="452" y="352" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">對手</text>
+      <text x="126" y="392" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">箭頭方向為示意；哪一邊是「正軌」請用下方 30 秒校正法自己測</text>
     </svg>
     <figcaption>
-      <b>圖 05</b>　逆軌的價值在「時機」不在「力量」：撞在對手<em>還在加速</em>的那一段，等於用他的動能對付他自己。撞在他到頂速之後，你就只是在跟他比誰重。
+      <b>圖 04</b>　不要背方向。右旋、左旋、不同軸心的自然繞行方向不一樣，你的盤也可能有磨損差異。<b>先測，再練。</b>
     </figcaption>
   </figure>
 
-  <div class="sub">
-    <h3>4.1　執行步驟</h3>
-    <ol>
-      <li><strong>先確認方向</strong>——用第 01 節的 30 秒自我校正，找出「你的陀螺會沿 X 線往哪邊跑」。逆軌就是站到能讓它往<em>相反</em>方向跑的那一端。</li>
-      <li><strong>發射器貼齊盤緣</strong>——位置比角度重要。把發射器放到那一側的邊緣正上方。</li>
-      <li><strong>角度不必嚴格</strong>——輕微傾斜就足夠。這是逆軌相對好上手的原因：它靠站位吃紅利，不靠極限技巧。</li>
-      <li><strong>用平面軸心（Flat 系）練</strong>——平底軸移動量大、上軌容易，最適合用來建立手感。Winder（旋風）發射器動作大、回饋明確，練習期比繩式更容易看出自己哪裡做錯。</li>
-      <li><strong>抽速刻意壓低</strong>——練習期用約 7 成力。逆軌失敗最常見的原因是速度太快直接衝過交會點。</li>
-    </ol>
+  <div class="box">
+    <span class="t">30 秒校正法（每次換配置都要重做）</span>
+    <p>拿訓練彈，用最放鬆的方式垂直落在盤中央，什麼技巧都不要加。用手機慢動作錄，看它自己往哪個方向繞——那就是「正軌」。逆軌 = 與它相反。這 30 秒省下你三天的瞎練。</p>
   </div>
 
-  <div class="box">
-    <span class="t">為什麼要優先練這招</span>
-    <p>逆軌是專門用來對付「靠反向爬升來防守」的持久／防禦型對手的解。這類配置在天梯上長期強勢，而正面硬碰通常打不動它們。如果你只想學一個進階發射技，先學這個。</p>
+  <div class="sub">
+    <h3>4.1　打出逆軌的三個槓桿</h3>
+    <p>逆軌的本質是：<strong>落地瞬間的橫向初速 &gt; 自然繞行趨勢</strong>。要放大橫向初速，你有三個可以調的東西：</p>
+    <ul>
+      <li><strong>左右傾的方向</strong>——用第 03 節的法則，把落點與初速方向推向逆軌側。這是主要槓桿。</li>
+      <li><strong>發射瞬間的橫向帶動</strong>——發射的同時，持發射器的手往逆軌方向<em>平移一小段</em>。不是甩，是帶。幅度小、速度快。</li>
+      <li><strong>落點半徑</strong>——落在越靠外圈，繞行方向越容易被盤壁與 X 線接管；落點偏中央，你的初速主導權越大。練逆軌從中央偏內開始比較容易成功。</li>
+    </ul>
+    <p class="note">練習期把抽速壓到 7 成。太快的陀螺會直接被盤壁接管，你根本看不出自己那一下橫向帶動有沒有效。</p>
+  </div>
+
+  <div class="sub">
+    <h3>4.2　驗收方式</h3>
+    <p>不要用「感覺有逆」來判斷。每一發都錄影，慢動作看<strong>落地後前兩圈</strong>的繞行方向。連續 20 發，記成功次數。逆軌成功率從 3/20 練到 15/20，大約就是一週的事。</p>
   </div>
 </section>
 
@@ -543,58 +446,65 @@
 <section>
   <div class="sec-head">
     <span class="sec-num">05</span>
-    <h2>躲貓耳：續力迴避，把「不失分」練成一種技術</h2>
+    <h2>躲貓耳：在 X 線入口逆軌蓄力</h2>
   </div>
   <p>
-    「貓耳」是社群對盤面角落那兩個像耳朵一樣的出局口袋的暱稱。被打進去＝對手 <strong>Over Finish 2 分</strong>；被 X 線甩進中央的極限出場區＝對手 <strong>Xtreme Finish 3 分</strong>。相對地，只要你比對手多轉一秒，就拿 <strong>Spin Finish 1 分</strong>。
+    「躲貓耳」不是閃開貓耳，是<strong>躲在貓耳</strong>。做法是把陀螺送到 X 線入口那個區域，讓它在上面<strong>逆軌蓄力</strong>——這是一個同時做到三件事的位置：
   </p>
+  <ul>
+    <li><strong>續力</strong>——在入口區逆向卡著，比在盤中央空轉更能維持轉速，也不會被 X 線一路帶著高速消耗。</li>
+    <li><strong>迴避</strong>——攻擊型對手的路線建立在正軌節奏上。你反著卡在入口，他的衝擊時機會落空。</li>
+    <li><strong>控門</strong>——貓耳是對手上 X 線的必經之門。你佔著這裡，等於同時削弱他的 X-DASH。</li>
+  </ul>
   <p>
-    這條分數結構決定了一件反直覺的事：<strong>大部分的敗場不是輸在攻擊不夠強，而是輸在自己送分</strong>。躲貓耳就是把「續力（拖時間）」和「迴避（不進口袋）」綁在同一個發射動作裡。
+    所以這一招不是防守技，是<strong>用位置換取分數結構優勢</strong>：對手拿不到 X-DASH，你多轉一秒就是 Spin Finish 1 分。
   </p>
 
   <figure>
-    <svg viewBox="0 0 640 400" role="img" aria-label="躲貓耳示意圖：危險口袋與安全滯留區">
-      <path d="M120 40 H520 L600 115 V275 L520 350 H120 L40 275 V115 Z" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
-      <line x1="130" y1="52" x2="510" y2="52" stroke="var(--line)" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+    <svg viewBox="0 0 640 420" role="img" aria-label="躲貓耳示意圖：我方在貓耳區逆軌蓄力，對手沿正軌繞行落空">
+      <rect x="70" y="30" width="500" height="330" rx="32" fill="var(--field)" stroke="var(--ink-3)" stroke-width="2"/>
+      <circle cx="320" cy="195" r="152" fill="var(--paper-2)" stroke="var(--rule)" stroke-width="2"/>
+      <circle cx="320" cy="195" r="138" fill="none" stroke="var(--rail)" stroke-width="8"/>
 
-      <!-- danger pockets -->
-      <path d="M40 275 L120 350 L120 275 Z" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="2.5"/>
-      <path d="M600 275 L520 350 L520 275 Z" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="2.5"/>
-      <rect x="245" y="326" width="150" height="26" fill="var(--warn-soft)" stroke="var(--warn)" stroke-width="2.5"/>
-
-      <!-- safe zone -->
-      <ellipse cx="320" cy="185" rx="118" ry="82" fill="var(--line-soft)" stroke="var(--line)" stroke-width="2.5" stroke-dasharray="8 6"/>
-      <text x="256" y="180" font-family="ui-monospace, monospace" font-size="13" fill="var(--line)">安全滯留區</text>
-      <text x="234" y="202" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--line)">低速 · 貼近中心 · 不上軌</text>
-
-      <g font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">
-        <text x="26" y="256">貓耳 −2</text>
-        <text x="524" y="256">貓耳 −2</text>
-        <text x="268" y="376">極限出場區 −3</text>
+      <!-- cat ear zone highlight -->
+      <circle cx="418" cy="97" r="52" fill="var(--rail-soft)" stroke="var(--rail)" stroke-width="2.5" stroke-dasharray="7 6"/>
+      <g transform="translate(418,97) rotate(225)">
+        <path d="M-32 2 L-17 -23 L0 -6 L17 -23 L32 2" fill="none" stroke="var(--rail)" stroke-width="6.5" stroke-linejoin="round" stroke-linecap="round"/>
       </g>
+      <text x="452" y="46" font-family="ui-monospace, monospace" font-size="12.5" fill="var(--rail)">貓耳＝X 線入口</text>
 
-      <!-- bad path -->
-      <path d="M320 300 C 380 260, 470 250, 546 300" fill="none" stroke="var(--warn)" stroke-width="3" stroke-dasharray="6 5"/>
-      <polygon points="550,304 534,296 532,310" fill="var(--warn)"/>
-      <text x="380" y="290" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">抽速過猛 → 自己送分</text>
+      <!-- my bey parked with reverse micro-orbit -->
+      <circle cx="418" cy="112" r="11" fill="var(--line)"/>
+      <path d="M400 128 A 24 24 0 1 0 436 128" fill="none" stroke="var(--line)" stroke-width="2.5"/>
+      <polygon points="437,131 428,120 441,118" fill="var(--line)"/>
+      <text x="446" y="140" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">我方：逆軌蓄力</text>
+
+      <!-- opponent normal orbit sweeping past -->
+      <path d="M250 74 A 122 122 0 1 0 300 320" fill="none" stroke="var(--warn)" stroke-width="3" stroke-dasharray="8 6"/>
+      <polygon points="304,321 288,314 290,330" fill="var(--warn)"/>
+      <circle cx="250" cy="74" r="9" fill="var(--warn)"/>
+      <text x="130" y="66" font-family="ui-monospace, monospace" font-size="12.5" fill="var(--warn)">對手：正軌節奏</text>
+      <text x="150" y="352" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">衝擊時機落空</text>
     </svg>
     <figcaption>
-      <b>圖 06</b>　躲貓耳不是「閃避動作」，是<em>發射時就決定好的落點與速度</em>。陀螺一旦離開發射器你就沒有控制權了——所有的迴避都發生在發射的那 0.2 秒。
+      <b>圖 05</b>　貓耳是全盤唯一「兩種打法都想搶」的座標。攻擊型要靠它上軌爆發，持久型要靠它逆軌蓄力——先到的人佔便宜。
     </figcaption>
   </figure>
 
   <div class="sub">
-    <h3>5.1　三個具體做法</h3>
-    <ul>
-      <li><strong>降抽速到甜蜜點</strong>——8,000–10,000。這個區間足以拚 Spin Finish，同時大幅降低把自己彈出場的機率。你不需要每一發都全力。</li>
-      <li><strong>用左傾把陀螺留在近端</strong>——搭配第 03 節的左右傾法則：向左傾讓陀螺回到射手側，遠離對面的口袋，也遠離 X 線的高速段。</li>
-      <li><strong>壓低彈跳</strong>——落地後彈得越高，之後的路徑越不可預測。傾角過大、抽速過猛都會加重彈跳。低彈跳＝可預測＝安全。</li>
-    </ul>
+    <h3>5.1　執行順序（先會逆軌，才練得了這招）</h3>
+    <ol>
+      <li><strong>先過第 04 節</strong>——逆軌成功率沒到 15/20，不要練這招。它的前置技能就是逆軌。</li>
+      <li><strong>選發射位</strong>——左右兩側各試一輪，看從哪一側比較容易把陀螺送進貓耳區。這跟你的自然繞行方向有關，兩邊的難度不對稱。</li>
+      <li><strong>用左右傾把落點推向貓耳側</strong>——不是直接打在貓耳上，而是讓陀螺在前一兩圈自然滑進那個區域。直接硬打通常會彈開。</li>
+      <li><strong>抽速壓在 8,000–10,000</strong>——太猛會被 X 線接管一路帶走，蓄不了力，還可能自己送分。這個區間是續力戰的甜蜜點。</li>
+      <li><strong>壓低彈跳</strong>——落地彈得越高，路徑越不可預測，越進不了那個小區域。低彈跳＝可預測＝進得去。</li>
+    </ol>
   </div>
 
-  <div class="box warn">
-    <span class="t">分數帳本</span>
-    <p>一場比賽裡，「我沒打贏但也沒失分」的價值遠高於「我打了一發超猛的但自己飛出去」。1 分 × 4 次，勝過 3 分 × 1 次加上被拿 2 分 × 2 次。先把送分歸零，再談加分。</p>
+  <div class="box rail">
+    <span class="t">驗收</span>
+    <p>20 發，記兩個數字：①&nbsp;成功把陀螺送進貓耳區的次數；②&nbsp;送進去之後<strong>停留超過三圈</strong>的次數。第二個數字才是真的會了——進得去但留不住，等於沒用。</p>
   </div>
 </section>
 
@@ -617,41 +527,40 @@
         <li><strong>Day 1–2</strong>　空拉 30 次／日，不裝陀螺。只做「鬆手 → 轉腰 → 直線抽出」。錄影從側面看手臂路徑是否走直線。</li>
         <li><strong>Day 3–4</strong>　裝訓練彈，每日 40 發。固定手全力握死，拉繩手刻意用 4 成握力。記錄每 20 發的平均與最高。</li>
         <li><strong>Day 5–6</strong>　單變數測試：一組改站姿、一組改轉腰時機、一組改起始加速點。只改一個，比數據。</li>
-        <li><strong>Day 7</strong>　驗收：連續 20 發，記平均、最高、以及最低值。</li>
+        <li><strong>Day 7</strong>　驗收：連續 20 發，記平均、最高、最低。</li>
       </ul>
-      <p class="kpi">驗收標準：<b>20 發的最低值</b>比 Day 3 的平均值高，而且 20 發全部落在 ±1,500 以內。追穩定，不追峰值。</p>
+      <p class="kpi">驗收標準：<b>20 發的最低值</b>高於 Day 3 的平均值，且 20 發全部落在 ±1,500 以內。追穩定，不追峰值。</p>
     </div>
 
     <div class="week">
       <div class="week-top">
         <span class="week-n">WEEK 02 · DAY 8–14</span>
-        <h3>角度刻度化：讓落點聽話</h3>
-        <span class="week-goal">變數：傾角＋落點</span>
+        <h3>角度校正：找出你自己的上軌組合</h3>
+        <span class="week-goal">變數：傾角＋高度＋落點</span>
       </div>
       <ul>
-        <li><strong>Day 8</strong>　把盤面用貼紙分成四區。每發射前先宣告目標區，記命中率。第一天通常只有三到四成，正常。</li>
-        <li><strong>Day 9–10</strong>　前後傾專練：0° / 10° / 20° / 30° 各 15 發，觀察並記錄「有沒有爬上 X 線」。找出你自己觸發 X-DASH 的最低角度。</li>
-        <li><strong>Day 11–12</strong>　左右傾專練：只用左傾打 30 發，全部要求留在射手側；再用右傾打 30 發，全部要求前行上軌。</li>
-        <li><strong>Day 13</strong>　混合：隨機抽籤決定目標區，40 發。</li>
+        <li><strong>Day 8–9</strong>　做完第 3.1 節的三格校正法（掃傾角、掃高度），寫下你的「上軌組合」。</li>
+        <li><strong>Day 10–11</strong>　左右傾專練：只用左傾打 30 發，全部要求留在射手側；再用右傾打 30 發，全部要求前行遠端。</li>
+        <li><strong>Day 12–13</strong>　四區落點：把盤面分四區，每發射前先宣告目標區。40 發，記命中率。</li>
         <li><strong>Day 14</strong>　驗收：40 發指定落點。</li>
       </ul>
-      <p class="kpi">驗收標準：指定落點命中率 <b>≥ 70%</b>，且 X-DASH 觸發率（右傾組）<b>≥ 60%</b>。</p>
+      <p class="kpi">驗收標準：指定落點命中率 <b>≥ 70%</b>，且用你的上軌組合打 15 發，成功從貓耳上 X 線 <b>≥ 10 次</b>。</p>
     </div>
 
     <div class="week">
       <div class="week-top">
         <span class="week-n">WEEK 03 · DAY 15–21</span>
-        <h3>逆軌：站位吃紅利</h3>
-        <span class="week-goal">變數：位置</span>
+        <h3>逆軌：壓過自然繞行方向</h3>
+        <span class="week-goal">變數：繞行方向</span>
       </div>
       <ul>
-        <li><strong>Day 15</strong>　做完 30 秒自我校正，確定兩側的行進方向差異，寫進筆記。</li>
-        <li><strong>Day 16–17</strong>　空盤練習：只從逆軌側發射，30 發，要求「穩定爬上 X 線且往預期方向跑」。抽速壓在 7 成。</li>
-        <li><strong>Day 18–19</strong>　雙人／自打雙發：先射一顆當「對手」走正軌，再用第二顆打逆軌，練交會點的時機。沒有人陪練就用手機錄影慢動作檢查交會位置。</li>
-        <li><strong>Day 20</strong>　把抽速拉回 9 成再打一輪，找出「太快會衝過交會點」的臨界。</li>
-        <li><strong>Day 21</strong>　驗收：20 次逆軌嘗試。</li>
+        <li><strong>Day 15</strong>　30 秒校正法，錄影確認你的訓練彈的自然繞行方向，寫進筆記。</li>
+        <li><strong>Day 16–17</strong>　只練左右傾這一個槓桿：抽速 7 成、落點中央偏內，30 發，慢動作看前兩圈方向。</li>
+        <li><strong>Day 18–19</strong>　加入「橫向帶動」：發射同時持發射器的手往逆軌方向平移一小段。先小幅度，逐步加大到會失敗為止，找臨界。</li>
+        <li><strong>Day 20</strong>　把抽速拉回 9 成再打一輪，看逆軌成功率掉多少——那就是你目前的速度上限。</li>
+        <li><strong>Day 21</strong>　驗收：20 發。</li>
       </ul>
-      <p class="kpi">驗收標準：成功以逆軌方向上軌 <b>≥ 15/20</b>，其中在對手加速段完成攔截 <b>≥ 8 次</b>。</p>
+      <p class="kpi">驗收標準：逆軌成功（落地後前兩圈確實反向）<b>≥ 15/20</b>。</p>
     </div>
 
     <div class="week">
@@ -661,13 +570,13 @@
         <span class="week-goal">變數：全部</span>
       </div>
       <ul>
-        <li><strong>Day 22–23</strong>　續力迴避單練：抽速刻意壓在 8,000–10,000，左傾留近端，30 發全部要求「不進任何出局口袋」。</li>
-        <li><strong>Day 24–25</strong>　失分審計：打 5 場模擬賽，只記一件事——每一次失分是怎麼失的（貓耳／極限區／爆裂／轉速輸）。</li>
-        <li><strong>Day 26–27</strong>　情境切換練習：對持久型用逆軌、對攻擊型用躲貓耳，逐發喊出你選哪一招再射。</li>
-        <li><strong>Day 28</strong>　驗收：完整模擬賽三場。</li>
+        <li><strong>Day 22–23</strong>　左右發射位各打 20 發，找出哪一側比較容易把陀螺送進貓耳區。記兩側成功率。</li>
+        <li><strong>Day 24–25</strong>　停留練習：抽速壓 8,000–10,000，30 發，記「進得去」與「留超過三圈」兩個數字。</li>
+        <li><strong>Day 26–27</strong>　情境切換：對攻擊型用躲貓耳續力、對持久型用逆軌搶位，逐發喊出你選哪一招再射。</li>
+        <li><strong>Day 28</strong>　驗收：完整模擬賽三場，只記一件事——每一次失分是怎麼失的。</li>
         <li><strong>Day 29–30</strong>　回頭重測 Week 1 的抽速項目，比較起點與終點；把四週筆記濃縮成一張自己的「發射檢查卡」。</li>
       </ul>
-      <p class="kpi">驗收標準：模擬賽中<b>自我失誤造成的失分（Over／Xtreme）為 0</b>，且 Day 30 的抽速平均值高於 Day 7。</p>
+      <p class="kpi">驗收標準：躲貓耳「留超過三圈」<b>≥ 12/30</b>，且模擬賽中<b>自我失誤造成的失分為 0</b>。</p>
     </div>
   </div>
 </section>
@@ -684,13 +593,13 @@
         <tr><th>症狀</th><th>最可能的原因</th><th>修正</th></tr>
       </thead>
       <tbody>
-        <tr><td>抽速一直卡在 10,000 上不去</td><td>拉繩手握太緊、力量集中在後半段</td><td>降握力到 4 成；把加速集中在起始瞬間；改由轉腰帶動</td></tr>
+        <tr><td>抽速卡在 10,000 上不去</td><td>拉繩手握太緊、力量集中在後半段</td><td>降握力到 4 成；加速集中在起始瞬間；改由轉腰帶動</td></tr>
         <tr><td>每一發差很多，不穩定</td><td>固定手沒鎖死，發射器發射瞬間位移</td><td>非慣用手全力握，手肘夾住身側，發射時發射器不得移動</td></tr>
-        <tr><td>打不出 X-DASH</td><td>傾角不足，陀螺沒爬到齒軌高度</td><td>把前傾角推到 15–30° 帶，用 Flat 系軸心先建立手感</td></tr>
-        <tr><td>常常自己飛出場</td><td>抽速過猛 ＋ 角度過大 ＋ 彈跳過高</td><td>降到 8,000–10,000 甜蜜點，改左傾把陀螺留在近端</td></tr>
-        <tr><td>逆軌總是撞不到</td><td>速度太快衝過交會點，或站位選錯端</td><td>抽速降到 7 成；重做 30 秒自我校正確認方向</td></tr>
-        <tr><td>發射器很快就鬆掉／打滑</td><td>每發都拉到底硬扯</td><td>陀螺在繩子抽出一半時已脫離，後半段只是在磨耗零件——別拉滿</td></tr>
-        <tr><td>空轉（陀螺沒轉起來）</td><td>陀螺沒扣穩、發射器角度太斜、起始加速太慢</td><td>先確認咬合聲，起手先垂直再帶角度</td></tr>
+        <tr><td>上不了貓耳、打不出 X-DASH</td><td>傾角／高度組合沒校正過</td><td>做第 3.1 節三格校正法，找出你自己的組合，別套網路數字</td></tr>
+        <tr><td>逆軌打不出來</td><td>抽速太快，陀螺被盤壁與 X 線接管</td><td>降到 7 成、落點往中央偏內，先讓初速主導</td></tr>
+        <tr><td>逆軌只有偶爾成功</td><td>只用左右傾，沒加橫向帶動</td><td>發射同時手往逆軌方向平移一小段——小幅度、快速度</td></tr>
+        <tr><td>進得了貓耳但留不住</td><td>落地彈跳太高，或速度殘留太多</td><td>壓低發射高度降彈跳；抽速回到 8,000–10,000</td></tr>
+        <tr><td>發射器很快就鬆掉／打滑</td><td>每發都拉到底硬扯</td><td>陀螺在繩子抽出一半時已脫離，後半段只是在磨耗零件</td></tr>
       </tbody>
     </table>
   </div>
@@ -703,27 +612,25 @@
     <h2>關於這份手冊</h2>
   </div>
   <details>
-    <summary>資料來源與兩點必須說明的限制</summary>
+    <summary>資料來源、Rev.1 的錯誤、以及還沒補上的空白</summary>
     <div>
-      <p class="note"><strong>限制一：</strong>這個工作環境的網路政策封鎖了 YouTube，所以我無法直接觀看你給的影片或抓取字幕。這份手冊是依據該頻道（Namaste 阿土）同主題影片的標題與公開摘要，加上下列可讀取的中／日／英文技術文章重建出來的，內容方向一致，但不是那支影片的逐字整理。</p>
-      <p class="note"><strong>限制二：</strong>「貓耳」是社群口語，我沒有找到白紙黑字的定義。手冊中採用最合理的解讀——盤面角落那兩個 Over Zone 出局口袋。如果你們社群指的是別的部位，第 05 節的練習邏輯（降抽速、左傾留近端、壓低彈跳）依然成立，只要把圖上的危險區換成正確位置即可。</p>
+      <p class="note"><strong>網路限制：</strong>這個執行環境的網路政策把對外的網頁抓取<em>全部</em>擋掉（YouTube、Threads、note.com、維基百科、go-shoot 一律 403），我只能讀到搜尋引擎回傳的摘要，看不到頁面本身也看不到影片。所以這份手冊的骨架來自可搜尋到的中／日／英文技術文章，而<strong>貓耳、逆軌、躲貓耳這三個關鍵定義來自使用者本人的更正</strong>。</p>
+      <p class="note"><strong>Rev.1 錯在哪：</strong>把貓耳誤認為角落出局口袋、把逆軌誤解為「相對於對手的反向」。兩個錯誤都已在 Rev.2 修正，相關章節重寫、圖重繪。</p>
+      <p class="note"><strong>還沒補上的空白：</strong>第 04 節「打出逆軌的三個槓桿」與第 05 節「怎麼把陀螺送進貓耳區」是我依物理推導 ＋ 通用發射原理寫的操作框架，<em>不是</em>阿土影片裡的具體手法。如果你能把影片裡實際講的步驟（手怎麼帶、站哪一側、傾角大概多少）告訴我，我可以直接更新同一個連結，把框架換成實際做法。</p>
     </div>
   </details>
 
   <footer>
     <span class="eyebrow">Sources</span>
     <ul>
-      <li><a href="https://www.youtube.com/watch?v=_el8OLeEARU">Namaste 阿土｜如何提升抽速達到 15000 的發射小技巧：逆軌 &amp; 躲貓耳續力迴避</a></li>
-      <li><a href="https://www.youtube.com/watch?v=bH8rDjve0CA">9 分鐘教會你如何打出逆走發射</a></li>
+      <li><a href="https://www.youtube.com/watch?v=_el8OLeEARU">Namaste 阿土｜如何提升抽速達到 15000 的發射小技巧：逆軌 &amp; 躲貓耳續力迴避</a>（無法開啟，僅參考標題）</li>
+      <li><a href="https://go-shoot.github.io/x/">非官方資訊站｜爆旋陀螺X（X Line 空位、水平發射與 20 公分高度之說）</a></li>
       <li><a href="https://note.com/kamen_a/n/n1d2dc47b84c2">仮面A｜シュートテクニックの基本①：「強く引く」は間違い——"脱力"の物理学</a></li>
       <li><a href="https://note.com/kamen_a/n/n66859cbc6459">仮面A｜シュートテクニックの基本②：傾きを知らないプレイヤーは、毎試合「運任せ」で戦っている</a></li>
-      <li><a href="https://note.com/kamen_a/n/n7455ed185e75">仮面A｜「左側」を取った者が勝つ——ベイブレードX特有の構造的真実</a></li>
       <li><a href="https://note.com/tomoyuki_58/n/n1f4557923b3b">トモえ｜「失点を減らすシュート」を身に着けよう！</a></li>
       <li><a href="https://beypark7.com/beybladex-power-up/">ベイブレードXのシュートパワーを上げるコツ（動力鏈・固定手／拉繩手）</a></li>
       <li><a href="https://okuyama3093.com/beyblade-shootpower-increase/">おくろぐ｜シュートパワーを上げるコツ（實測 5,500 → 9,500）</a></li>
-      <li><a href="https://beyblade.fandom.com/wiki/Xtreme_Stadium">Beyblade Wiki｜Xtreme Stadium（Xtreme Line／Over Zone／Xtreme Zone）</a></li>
-      <li><a href="https://hackmd.io/@liangyutw/beyblade-important-record">HackMD｜Beyblade X 戰鬥陀螺重點整理</a></li>
-      <li><a href="https://malloftoys.com/blogs/news/advanced-beyblade-launch-techniques">Mall of Toys｜Advanced Beyblade Launch Techniques</a></li>
+      <li><a href="https://beyblade.fandom.com/wiki/Xtreme_Stadium">Beyblade Wiki｜Xtreme Stadium（Xtreme Line / 計分結構）</a></li>
       <li><a href="https://spiralforge.in/launching-heavier-beyblades/">SpiralForge｜Launching Heavier Beyblades（發射器類型與 RPM 上限）</a></li>
     </ul>
   </footer>
