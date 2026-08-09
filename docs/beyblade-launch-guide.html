@@ -125,7 +125,7 @@
 <div class="wrap">
 
 <header class="mast">
-  <div class="eyebrow">Beyblade X — 發射技術訓練手冊 / 30 DAYS / REV.3</div>
+  <div class="eyebrow">Beyblade X — 發射技術訓練手冊 / 30 DAYS / REV.4</div>
   <h1>從 X SIDE 逆軌上貓耳，<br>用成武連鞭把抽速練到一萬</h1>
   <p class="lede">
     這一版有真正的配方了：逆軌上貓耳有明確的手臂角度，抽速有明確的動作口訣，兩者都附物理模型。前兩版是我猜的，這一版是照社群實測資料重建的。
@@ -137,8 +137,9 @@
   </div>
 
   <div class="rev">
-    <span class="t">Rev.3 — 修訂與定位</span>
-    <p><strong>本版依社群實測資料重寫第 02、04 節。</strong>第 04 節的軸心摩擦模型與第 02 節的角動量模型，原作者都明確標示為<em>假說／猜想</em>並公開徵求修正——本手冊維持這個標示，把它們當成「目前最好用的操作模型」，不是定論。前兩版關於貓耳與逆軌的錯誤定義已全部移除。</p>
+    <span class="t">Rev.4 — 修訂與定位</span>
+    <p><strong>Rev.4 新增 2.3「為什麼手不能畫弧」與 2.4「兩隻手必須反向」。</strong>這兩節解答同一個問題：為什麼有人把姿勢改對了、腿也用上了，SP 反而掉下來。答案是相對速度被抵消——詳見圖 05。</p>
+    <p><strong>Rev.3 依社群實測資料重寫第 02、04 節。</strong>第 04 節的軸心摩擦模型與第 02 節的角動量模型，原作者都明確標示為<em>假說／猜想</em>並公開徵求修正——本手冊維持這個標示，把它們當成「目前最好用的操作模型」，不是定論。前兩版關於貓耳與逆軌的錯誤定義已全部移除。</p>
   </div>
 
   <div class="mantra">
@@ -366,7 +367,112 @@
   </figure>
 
   <div class="sub">
-    <h3>2.3　練習順序</h3>
+    <h3>2.3　為什麼手不能「畫弧」</h3>
+    <p>
+      繩子只在意一件事：<strong>你的手沿著繩子的方向，離開發射器多快</strong>。手速裡凡是<em>垂直於繩子</em>的那個分量，一點忙都幫不上——它不拉繩，只是把你的手帶到旁邊去。
+    </p>
+    <p>
+      當你的手繞著肩膀畫一個弧（大多數人的自然動作），弧線上每一點的行進方向都跟繩子的軸線有夾角。夾角越大，你的力氣裡被浪費掉的比例越高。<strong>同樣的手速，走直線可以全額入帳，走弧線只入帳一部分。</strong>
+    </p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 380" role="img" aria-label="俯視圖：拉繩手走直線與走弧線的差別，弧線的速度被拆成有效與白費兩個分量">
+      <!-- launcher -->
+      <rect x="470" y="140" width="52" height="24" rx="5" fill="var(--field-2)" stroke="var(--ink-3)" stroke-width="2"/>
+      <text x="486" y="126" font-family="ui-monospace, monospace" font-size="12" fill="var(--ink-2)">發射器</text>
+
+      <!-- cord axis -->
+      <g stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="7 7">
+        <line x1="470" y1="152" x2="52" y2="152"/>
+      </g>
+      <text x="330" y="142" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">繩子的軸線</text>
+
+      <!-- correct straight path -->
+      <line x1="462" y1="152" x2="84" y2="152" stroke="var(--line)" stroke-width="5"/>
+      <polygon points="76,152 96,143 96,161" fill="var(--line)"/>
+      <text x="120" y="184" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="var(--line)">直線：手速 100% 都在拉繩</text>
+
+      <!-- shoulder pivot + arc -->
+      <circle cx="424" cy="322" r="9" fill="var(--ink-3)"/>
+      <text x="440" y="332" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">肩（轉軸）</text>
+      <path d="M458 174 C 420 240, 356 276, 232 296" fill="none" stroke="var(--warn)" stroke-width="4.5" stroke-dasharray="9 6"/>
+      <polygon points="224,297 244,288 246,306" fill="var(--warn)"/>
+      <text x="196" y="336" font-family="ui-monospace, monospace" font-size="13" font-weight="600" fill="var(--warn)">弧線：只有一部分在拉繩</text>
+
+      <!-- decomposition at a point on the arc -->
+      <circle cx="356" cy="262" r="6" fill="var(--warn)"/>
+      <line x1="356" y1="262" x2="292" y2="216" stroke="var(--line)" stroke-width="4"/>
+      <polygon points="286,212 306,209 300,225" fill="var(--line)"/>
+      <text x="238" y="206" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--line)">有效分量</text>
+      <line x1="356" y1="262" x2="356" y2="216" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <line x1="292" y1="216" x2="292" y2="262" stroke="var(--rule)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <line x1="356" y1="262" x2="356" y2="308" stroke="var(--warn)" stroke-width="4"/>
+      <polygon points="356,314 348,294 364,294" fill="var(--warn)"/>
+      <text x="366" y="296" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--warn)">白費分量</text>
+    </svg>
+    <figcaption>
+      <b>圖 04</b>　俯視圖。把弧線上任一點的手速拆成兩個方向：沿著繩子的那一份在拉繩，垂直於繩子的那一份純粹浪費。<b>口令：想像你要用拉繩手去打身後牆上的一個點——那個點在發射器軸線的延長線上，不在你的身側。</b>
+    </figcaption>
+  </figure>
+
+  <div class="box">
+    <span class="t">怎麼檢查自己有沒有畫弧</span>
+    <p>看<strong>收手的位置</strong>。拉完之後，你的拉繩手應該停在「發射器 → 目標」的<em>反方向延長線</em>上。如果它停在你的身側、或者身後上方，那就是繞過去了。錄影定格最後一格，用一把尺對著發射器拉一條線，看你的手在不在線上。</p>
+  </div>
+
+  <div class="sub">
+    <h3>2.4　兩隻手必須反向</h3>
+    <p>
+      通行證量的是<strong>發射器與拉繩手之間的相對速度</strong>，不是你身體移動得多快。這件事的後果很反直覺：<strong>如果兩隻手往同一個方向走，速度會互相抵消。</strong>
+    </p>
+    <p>
+      這是很多人加上蹲起與轉腰之後<em>反而掉分</em>的原因——身體一起身，發射器手被整個身體帶著往上往後跑，而拉繩手也往同個大方向移動，兩者相減。身體動得比以前多，繩速卻更慢。
+    </p>
+    <p>
+      「前推」就是解這件事的。<strong>它是整套動作裡唯一讓兩隻手反向移動的機制</strong>：發射器往前送、拉繩手往後抽，相對速度變成兩者<em>相加</em>。沒有前推，腿與腰練出來的力量就卡在傳動軸上，進不到繩子。
+    </p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 300" role="img" aria-label="兩手同向與反向的相對速度對比">
+      <line x1="320" y1="24" x2="320" y2="276" stroke="var(--rule)" stroke-width="1.5"/>
+
+      <!-- Panel A : same direction -->
+      <text x="24" y="42" font-family="ui-monospace, monospace" font-size="12.5" font-weight="600" fill="var(--warn)">兩手同向 → 相減</text>
+      <rect x="212" y="76" width="48" height="22" rx="5" fill="var(--field-2)" stroke="var(--ink-3)" stroke-width="2"/>
+      <line x1="212" y1="87" x2="176" y2="87" stroke="var(--warn)" stroke-width="4"/>
+      <polygon points="170,87 188,79 188,95" fill="var(--warn)"/>
+      <text x="200" y="68" font-family="ui-monospace, monospace" font-size="11" fill="var(--ink-3)">發射器</text>
+      <circle cx="128" cy="130" r="10" fill="var(--ink-2)"/>
+      <line x1="118" y1="130" x2="44" y2="130" stroke="var(--warn)" stroke-width="4"/>
+      <polygon points="38,130 56,122 56,138" fill="var(--warn)"/>
+      <text x="112" y="158" font-family="ui-monospace, monospace" font-size="11" fill="var(--ink-3)">拉繩手</text>
+      <rect x="44" y="196" width="96" height="20" fill="var(--warn)"/>
+      <rect x="44" y="196" width="216" height="20" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+      <text x="44" y="240" font-family="ui-monospace, monospace" font-size="12" fill="var(--warn)">相對速度：小</text>
+
+      <!-- Panel B : opposite -->
+      <text x="352" y="42" font-family="ui-monospace, monospace" font-size="12.5" font-weight="600" fill="var(--line)">兩手反向 → 相加</text>
+      <rect x="540" y="76" width="48" height="22" rx="5" fill="var(--field-2)" stroke="var(--ink-3)" stroke-width="2"/>
+      <line x1="588" y1="87" x2="620" y2="87" stroke="var(--line)" stroke-width="4"/>
+      <polygon points="626,87 608,79 608,95" fill="var(--line)"/>
+      <text x="524" y="68" font-family="ui-monospace, monospace" font-size="11" fill="var(--line)">發射器・前推</text>
+      <circle cx="456" cy="130" r="10" fill="var(--ink-2)"/>
+      <line x1="446" y1="130" x2="372" y2="130" stroke="var(--line)" stroke-width="4"/>
+      <polygon points="366,130 384,122 384,138" fill="var(--line)"/>
+      <text x="440" y="158" font-family="ui-monospace, monospace" font-size="11" fill="var(--ink-3)">拉繩手</text>
+      <rect x="372" y="196" width="216" height="20" fill="var(--line)"/>
+      <rect x="372" y="196" width="216" height="20" fill="none" stroke="var(--rule)" stroke-width="1.5"/>
+      <text x="372" y="240" font-family="ui-monospace, monospace" font-size="12" fill="var(--line)">相對速度：大</text>
+    </svg>
+    <figcaption>
+      <b>圖 05</b>　同樣的手速，方向決定一切。<b>如果你加了蹲起之後 SP 掉了，先測這一項</b>：維持新的下肢動作，但把發射器手鎖死不動（起身時肩膀往上跑，手要抵抗著留在原位），打 20 發。如果 SP 立刻回升，就確定是相對速度被抵消，不是動作退步。
+    </figcaption>
+  </figure>
+
+  <div class="sub">
+    <h3>2.5　練習順序</h3>
     <ol>
       <li><strong>先暖身</strong>。這個動作用到腰與肩，不暖身很容易受傷——原作者特別強調過。</li>
       <li><strong>拆開練</strong>：微蹲 10 次 → 微蹲＋轉腰 10 次 → 加前推 10 次 → 最後才加連鞭。每加一節都錄影確認前一節沒有走樣。</li>
@@ -451,7 +557,7 @@
       <text x="428" y="334" font-family="ui-monospace, monospace" font-size="11.5" fill="var(--ink-3)">→ 陀螺向前走</text>
     </svg>
     <figcaption>
-      <b>圖 04</b>　軸心接觸面向 → 摩擦力方向 → 移動方向。這是<b>假說模型</b>：原作者公開徵求物理與陀螺高手一起修正，也在徵集逆軌影片做研究。當成操作指南用，別當成定律。
+      <b>圖 06</b>　軸心接觸面向 → 摩擦力方向 → 移動方向。這是<b>假說模型</b>：原作者公開徵求物理與陀螺高手一起修正，也在徵集逆軌影片做研究。當成操作指南用，別當成定律。
     </figcaption>
   </figure>
 
@@ -587,6 +693,8 @@
       </thead>
       <tbody>
         <tr><td>抽速上不去</td><td>只用手臂，腰與腿沒有接進動力鏈</td><td>回去拆解練：微蹲 → 轉腰 → 前推 → 連鞭，一節一節加</td></tr>
+        <tr><td><strong>改對姿勢、加了蹲起，SP 反而掉</strong></td><td>起身時發射器手被身體帶著跑，兩手同向 → 相對速度相減</td><td>先把發射器手鎖死不動測 20 發驗證；確認後再加「前推」讓兩手反向（見 2.4）</td></tr>
+        <tr><td>手速感覺很快但 SP 不高</td><td>拉繩手走弧線，速度有一半是垂直於繩子的白費分量</td><td>對準發射器軸線的延長線拉；定格檢查收手位置在不在那條線上（見 2.3）</td></tr>
         <tr><td>拉到後段明顯變慢</td><td>手臂弧長不夠，繩子還沒抽完手已經沒路走</td><td>加大動作半徑；用「前推」拉開發射器與捏把的距離</td></tr>
         <tr><td>曲線尾巴拖很長</td><td>加速度分散，不是集中在起始</td><td>把力氣集中在波的前段，末端保持放鬆讓它被甩出去</td></tr>
         <tr><td>每發差很多</td><td>四個動作的節奏不固定，有時搶拍</td><td>用節拍練：先慢速做對，再逐步加快，不要一開始就全速</td></tr>
