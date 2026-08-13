@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
-  const staticUrls: MetadataRoute.Sitemap = ['about', 'contact', 'privacy', 'terms'].map(p => ({
+  const staticUrls: MetadataRoute.Sitemap = ['about', 'methodology', 'contact', 'privacy', 'terms'].map(p => ({
     url: `${SITE_URL}/${p}`,
     lastModified: now,
     changeFrequency: 'yearly',

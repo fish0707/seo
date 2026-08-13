@@ -34,7 +34,7 @@ export default function ToolShell({
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+      publisher: { '@id': `${SITE_URL}/#publisher` },
     },
     {
       '@context': 'https://schema.org',

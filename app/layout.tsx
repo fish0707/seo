@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION } from '@/lib/site'
+import { SITE_NAME, SITE_URL, SITE_TAGLINE, SITE_DESCRIPTION, PUBLISHER, CONTACT_EMAIL } from '@/lib/site'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,16 +40,41 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${SITE_URL}/#website`,
-  name: SITE_NAME,
-  url: SITE_URL,
-  description: SITE_DESCRIPTION,
-  publisher: {
-    '@type': 'Organization',
-    name: SITE_NAME,
-    url: SITE_URL,
-  },
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#publisher`,
+      name: PUBLISHER.name,
+      legalName: PUBLISHER.legalName,
+      url: PUBLISHER.url,
+      description: PUBLISHER.description,
+      sameAs: [PUBLISHER.url],
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Taichung',
+        addressCountry: 'TW',
+      },
+      founder: {
+        '@type': 'Person',
+        name: PUBLISHER.founder,
+        alternateName: PUBLISHER.founderAlias,
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: CONTACT_EMAIL,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      inLanguage: 'en',
+      publisher: { '@id': `${SITE_URL}/#publisher` },
+    },
+  ],
 }
 
 export default function RootLayout({

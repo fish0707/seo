@@ -8,6 +8,21 @@ export const SITE_DESCRIPTION =
   'Free, fast, and accurate online calculators. Age calculator, date difference, percentage calculator and more — no signup, no ads walls, works on any device.'
 export const CONTACT_EMAIL = 'hello@calc-mates.com'
 
+// ── Publisher ──
+// CalcMate is built and maintained by Digimate, a real company. Naming it
+// (and linking the two sites) is what ties this site to an accountable
+// real-world entity rather than leaving it anonymous.
+export const PUBLISHER = {
+  name: 'Digimate',
+  legalName: '數伴有限公司 (Digimate Co., Ltd.)',
+  url: 'https://www.digimate.tw',
+  description:
+    'A web design and CRM consultancy based in Taichung, Taiwan, working on website design and business process optimisation.',
+  location: 'Taichung, Taiwan',
+  founder: 'Chen Chien-Yu',
+  founderAlias: 'Fish Chen',
+} as const
+
 export type Tool = {
   slug: string
   name: string
