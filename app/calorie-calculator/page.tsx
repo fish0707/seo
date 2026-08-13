@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'calorie-calculator')!
@@ -49,11 +49,17 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Mifflin MD, St Jeor ST, Hill LA, Scott BJ, Daugherty SA, Koh YO. A new predictive equation for resting energy expenditure in healthy individuals. Am J Clin Nutr. 1990;51(2):241–247', publisher: 'American Journal of Clinical Nutrition', href: 'https://pubmed.ncbi.nlm.nih.gov/2305711/' },
+  { label: 'Physical Activity Guidelines for Americans, 2nd edition', publisher: 'US Department of Health and Human Services', href: 'https://health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>Be honest about the activity multiplier</h2>

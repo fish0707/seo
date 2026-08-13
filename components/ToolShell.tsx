@@ -6,6 +6,9 @@ import Footer from '@/components/Footer'
 
 export type Faq = { q: string; a: string }
 
+// A reference behind a tool's formula or its published thresholds.
+export type Source = { label: string; publisher: string; href?: string }
+
 // Wraps every tool page: breadcrumb + H1 + tool widget + prose content + FAQ,
 // and emits WebApplication / BreadcrumbList / FAQPage JSON-LD for the page.
 export default function ToolShell({
@@ -13,11 +16,13 @@ export default function ToolShell({
   faqs,
   children,
   article,
+  sources,
 }: {
   tool: Tool
   faqs: Faq[]
   children: React.ReactNode // the interactive calculator widget
   article: React.ReactNode  // the supporting prose content
+  sources?: Source[]        // references behind the formula or thresholds
 }) {
   const jsonLd = [
     {
@@ -86,6 +91,30 @@ export default function ToolShell({
             ))}
           </div>
         </section>
+
+        {sources && sources.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-xl font-semibold mb-2">Sources</h2>
+            <p className="text-sm text-muted mb-4">
+              The formula and any published thresholds used by this calculator come from the
+              references below.
+            </p>
+            <ol className="space-y-2 text-sm list-decimal list-inside marker:text-muted">
+              {sources.map(s => (
+                <li key={s.label} className="text-slate-700 leading-relaxed">
+                  {s.href ? (
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-brand hover:underline">
+                      {s.label}
+                    </a>
+                  ) : (
+                    <span>{s.label}</span>
+                  )}
+                  <span className="text-muted"> — {s.publisher}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
         <section className="mt-10">
           <h2 className="text-xl font-semibold mb-4">More Free Calculators</h2>

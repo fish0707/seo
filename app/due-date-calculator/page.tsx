@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'due-date-calculator')!
@@ -41,11 +41,17 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Methods for Estimating the Due Date — Committee Opinion No. 700', publisher: 'American College of Obstetricians and Gynecologists', href: 'https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2017/05/methods-for-estimating-the-due-date' },
+  { label: 'Definition of Term Pregnancy — Committee Opinion No. 579', publisher: 'American College of Obstetricians and Gynecologists', href: 'https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2013/11/definition-of-term-pregnancy' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>Only about 4 in 100 babies arrive on the date</h2>

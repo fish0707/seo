@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import { KeyNumbers, Pitfalls, WorkedExample } from '@/components/content'
 import Calculator from './Calculator'
 
@@ -50,11 +50,18 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'A healthy lifestyle — WHO recommendations (BMI classification)', publisher: 'World Health Organization', href: 'https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations' },
+  { label: 'Obesity and overweight — fact sheet', publisher: 'World Health Organization', href: 'https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight' },
+  { label: 'Assessing Your Weight — BMI for adults', publisher: 'US Centers for Disease Control and Prevention', href: 'https://www.cdc.gov/healthyweight/assessing/index.html' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>The four WHO weight categories</h2>

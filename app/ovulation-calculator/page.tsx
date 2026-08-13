@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'ovulation-calculator')!
@@ -41,11 +41,17 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Wilcox AJ, Weinberg CR, Baird DD. Timing of sexual intercourse in relation to ovulation. N Engl J Med. 1995;333(23):1517–1521', publisher: 'New England Journal of Medicine', href: 'https://pubmed.ncbi.nlm.nih.gov/7477165/' },
+  { label: 'Fertility awareness-based methods of family planning', publisher: 'American College of Obstetricians and Gynecologists', href: 'https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>Ovulation is counted backwards, not forwards</h2>

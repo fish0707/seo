@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'ideal-weight-calculator')!
@@ -41,11 +41,18 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Robinson JD, Lupkiewicz SM, Palenik L, Lopez LM, Ariet M. Determination of ideal body weight for drug dosage calculations. Am J Hosp Pharm. 1983;40(6):1016–1019', publisher: 'American Journal of Hospital Pharmacy', href: 'https://pubmed.ncbi.nlm.nih.gov/6869387/' },
+  { label: 'Devine BJ. Gentamicin therapy. Drug Intell Clin Pharm. 1974;8:650–655', publisher: 'Drug Intelligence & Clinical Pharmacy' },
+  { label: 'Pai MP, Paloucek FP. The origin of the ideal body weight equations. Ann Pharmacother. 2000;34(9):1066–1069', publisher: 'Annals of Pharmacotherapy', href: 'https://pubmed.ncbi.nlm.nih.gov/10981254/' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>There is no single &ldquo;ideal&rdquo; weight</h2>

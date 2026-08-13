@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'calories-burned-calculator')!
@@ -41,11 +41,17 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Ainsworth BE, Haskell WL, Herrmann SD, et al. 2011 Compendium of Physical Activities. Med Sci Sports Exerc. 2011;43(8):1575–1581', publisher: 'Medicine & Science in Sports & Exercise', href: 'https://pubmed.ncbi.nlm.nih.gov/21681120/' },
+  { label: 'Physical Activity Guidelines for Americans, 2nd edition', publisher: 'US Department of Health and Human Services', href: 'https://health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>Exercise burns less than most people assume</h2>

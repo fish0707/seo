@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
-import ToolShell, { type Faq } from '@/components/ToolShell'
+import ToolShell, { type Faq, type Source } from '@/components/ToolShell'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'body-fat-calculator')!
@@ -41,11 +41,17 @@ const faqs: Faq[] = [
   },
 ]
 
+const sources: Source[] = [
+  { label: 'Hodgdon JA, Beckett MB. Prediction of percent body fat for U.S. Navy men and women from body circumferences and height. Naval Health Research Center, Report No. 84-11', publisher: 'Naval Health Research Center', href: 'https://apps.dtic.mil/sti/citations/ADA143890' },
+  { label: 'Percent body fat norms for men and women', publisher: 'American Council on Exercise', href: 'https://www.acefitness.org/resources/everyone/tools-calculators/percent-body-fat-calculator/' },
+]
+
 export default function Page() {
   return (
     <ToolShell
       tool={tool}
       faqs={faqs}
+      sources={sources}
       article={
         <>
           <h2>Consistency beats precision here</h2>
