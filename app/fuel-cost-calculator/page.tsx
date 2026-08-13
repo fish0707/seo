@@ -48,7 +48,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the fuel cost calculator</h2>
+          <h2>Use your real economy, not the sticker figure</h2>
+          <p>
+            Manufacturer fuel-economy ratings come from standardised laboratory cycles. Real driving
+            adds cold starts, traffic, hills, air conditioning, roof boxes, and speed — and typically
+            lands 10–20% worse than the official number.
+          </p>
+          <p>
+            On a 300 km trip that gap is the difference between a $39 estimate and a $47 reality. To
+            measure your own figure, fill the tank, note the odometer, drive normally for a few
+            hundred kilometres, then refill and divide the litres added by the distance covered. One
+            measurement gives you a number worth more than any brochure.
+          </p>
+
+          <h2>Running the numbers</h2>
           <p>
             Choose metric or imperial units, then enter your trip distance, your vehicle&rsquo;s fuel
             economy, and the current fuel price. The calculator returns the total cost of the trip,

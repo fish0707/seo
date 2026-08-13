@@ -48,21 +48,24 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the ROI calculator</h2>
+          <h2>A percentage without a timeframe is meaningless</h2>
+          <p>
+            &ldquo;I made 50% on that&rdquo; tells you almost nothing on its own. Over one year it is
+            an exceptional result. Over ten years it is 4.1% annually — worse than leaving the money
+            in a decent savings account.
+          </p>
+          <p>
+            That is why this calculator asks for a holding period. Total ROI answers &ldquo;how much
+            did I make?&rdquo;; the annualised figure answers &ldquo;was it worth it?&rdquo;, and only
+            the second lets you compare a quick flip against a long hold on equal terms.
+          </p>
+
+          <h2>Entering the numbers</h2>
           <p>
             Enter the amount you invested and the final value it reached. The calculator shows your
             total return on investment as a percentage and your net profit in currency. Add an
             optional holding period in years to also see the annualized return, which puts investments
             of different lengths on a comparable footing.
-          </p>
-
-          <h2>ROI is only half the story without time</h2>
-          <p>
-            Return on investment is the simplest way to judge whether something paid off, but a
-            percentage alone hides how long it took. Doubling your money is spectacular in a year and
-            unremarkable over twenty. That is why serious comparisons use the annualized figure: it
-            converts any total return into an equivalent yearly rate, so you can line up a quick trade
-            against a long-term holding and see which genuinely performed better.
           </p>
 
           <h2>Making the numbers honest</h2>
@@ -72,6 +75,19 @@ export default function Page() {
             away with — after tax — as the final value. Done that way, ROI becomes a reliable yardstick
             for comparing opportunities rather than a number that only looks good on paper. All
             calculations run in your browser and nothing is stored.
+          </p>
+
+          <h2>What ROI leaves out</h2>
+          <p>
+            Return on investment is a ratio, and ratios discard scale. A 200% return on $50 is $100;
+            a 12% return on $500,000 is $60,000. The first number looks better and the second pays
+            the mortgage. When comparing opportunities, read the percentage alongside the absolute
+            profit rather than instead of it.
+          </p>
+          <p>
+            It also says nothing about risk or about what you gave up elsewhere. A high return earned
+            by concentrating everything in one position is not equivalent to the same return earned
+            across a diversified holding, even though ROI scores them identically.
           </p>
         </>
       }

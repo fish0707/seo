@@ -48,7 +48,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the savings goal calculator</h2>
+          <h2>Working backwards from the goal</h2>
+          <p>
+            Most savings advice starts with what you can spare and hopes it adds up. This calculator
+            runs the other direction: name the amount and the deadline, and it tells you the monthly
+            figure that actually gets you there.
+          </p>
+          <p>
+            The answer is often clarifying in an uncomfortable way. A $20,000 deposit in three years
+            needs $556 a month with nothing saved and no interest. If that number is impossible, you
+            have learned something concrete — either the timeline or the target has to move, and now
+            you know by how much rather than discovering it eighteen months in.
+          </p>
+
+          <h2>What the inputs do</h2>
           <p>
             Enter your target amount and how many years you have to reach it. Optionally add what you
             have already saved and the annual return you expect to earn. The calculator tells you how

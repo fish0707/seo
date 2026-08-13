@@ -48,7 +48,24 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the length converter</h2>
+          <h2>Why imperial units need a converter and metric does not</h2>
+          <p>
+            Metric conversions are decimal shifts. A thousand millimetres make a metre, a thousand
+            metres make a kilometre — you move the decimal point and you are done, no tool required.
+          </p>
+          <p>
+            Imperial units inherited their ratios from unrelated historical measures, so each step is
+            a different multiplier: 12 inches to a foot, 3 feet to a yard, 1,760 yards to a mile.
+            There is no pattern to exploit, which is precisely why converting between systems by hand
+            is error-prone and worth automating.
+          </p>
+          <p>
+            The bridge between the two is defined exactly rather than approximated: one inch is
+            exactly 2.54 centimetres by international agreement since 1959. Every other length
+            conversion follows from that single definition.
+          </p>
+
+          <h2>Using the converter</h2>
           <p>
             Enter a value and choose the unit it is in. The converter instantly shows the equivalent
             in every other supported unit — millimetres, centimetres, metres, kilometres, inches,

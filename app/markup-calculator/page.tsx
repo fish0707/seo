@@ -48,21 +48,31 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the markup calculator</h2>
+          <h2>A 50% markup is a 33% margin</h2>
+          <p>
+            These two numbers describe the same sale and are routinely confused, which is how
+            businesses end up pricing themselves into losses. Markup measures profit against your
+            cost. Margin measures it against your selling price. Since the selling price is always
+            the larger of the two, margin is always the smaller percentage.
+          </p>
+          <p>
+            Buy at $40, apply a 50% markup, sell at $60. The $20 profit is half your cost — a 50%
+            markup — but only a third of the sale — a 33.3% margin. If you set prices by markup while
+            planning your business around margin, every product is less profitable than your
+            spreadsheet believes.
+          </p>
+          <p>
+            To convert between them: margin = markup ÷ (1 + markup), using decimals. A 100% markup is
+            a 50% margin; a 200% markup is a 66.7% margin. Margin can approach 100% but never reach
+            it, because the cost never disappears from the price.
+          </p>
+
+          <h2>Setting a price</h2>
           <p>
             Enter your cost and the markup percentage you want to apply. The calculator returns the
             selling price, the profit in currency, and the resulting profit margin. Because it shows
             both markup and margin, you can price an item and immediately see how much of the sale is
             actually profit. Everything runs in your browser.
-          </p>
-
-          <h2>Markup and margin are not the same</h2>
-          <p>
-            This is the single most common pricing mistake. Markup is calculated from your cost, while
-            margin is calculated from your selling price, so the same sale produces two different
-            percentages. A 50% markup sounds like a 50% margin, but it is really only about 33%. If
-            you set prices using a markup but think in terms of margin, you can badly underestimate
-            what you keep — which is exactly why this tool shows both.
           </p>
 
           <h2>Pricing with confidence</h2>
@@ -72,6 +82,14 @@ export default function Page() {
             in real time. That makes it easy to find a price that is competitive yet still leaves the
             margin your business needs. For working out discounts on the finished price, pair this with
             our discount calculator. Nothing you enter is stored.
+          </p>
+
+          <h2>Pricing from the margin you need</h2>
+          <p>
+            Most businesses know the margin their overheads require before they know what to charge.
+            Working in that direction, price = cost ÷ (1 − margin). If a product costs $40 and you
+            need a 40% margin, the price is 40 ÷ 0.60 = $66.67 — not $56, which is what applying a
+            40% markup would have given you.
           </p>
         </>
       }

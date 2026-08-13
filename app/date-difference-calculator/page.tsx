@@ -48,7 +48,21 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the date difference calculator</h2>
+          <h2>Inclusive or elapsed? The answer changes by one day</h2>
+          <p>
+            Ask two people how many days are between 1 March and 5 March and you will get two
+            answers. Elapsed counting says four — the number of nights that pass. Inclusive counting
+            says five — the number of calendar days touched, counting both ends.
+          </p>
+          <p>
+            Neither is wrong; they answer different questions. Rental days, hotel nights, and
+            interest periods use elapsed counting. Holiday allowances, event durations, and most
+            legal notice periods count inclusively. A one-day error in a contract or a leave request
+            is exactly the kind of small mistake that is expensive to discover late, which is why
+            this calculator lets you pick the convention rather than silently choosing for you.
+          </p>
+
+          <h2>Entering your dates</h2>
           <p>
             Pick a start date and an end date, and the exact gap between them appears instantly —
             as a total number of days, as weeks and days, and as a calendar breakdown in years,
@@ -73,6 +87,16 @@ export default function Page() {
             working out how many days remain until a deadline; measuring the length of a project or
             contract; checking how many weeks pregnant a due date implies; and settling questions
             like &quot;how many days have passed since&quot; a memorable date.
+          </p>
+
+          <h2>Why months are the awkward unit</h2>
+          <p>
+            Days and weeks are fixed lengths, so counting them is unambiguous. Months are not: they
+            run from 28 to 31 days, which means "three months from 31 January" has no single correct
+            answer. This calculator uses real calendar months and settles that case by capping at the
+            end of the target month, the same convention most scheduling software follows. If you
+            need an exact figure for a contract or an interest period, count in days instead —
+            they never drift.
           </p>
         </>
       }

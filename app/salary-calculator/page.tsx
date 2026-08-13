@@ -39,6 +39,10 @@ const faqs: Faq[] = [
     q: 'How is monthly pay calculated from a salary?',
     a: 'Monthly pay is simply the annual salary divided by 12, regardless of how many days are in each month. Some employers instead pay every two weeks (26 paychecks) or twice a month (24 paychecks), which produces slightly different per-cheque amounts.',
   },
+  {
+    q: 'Is a salaried job better than an hourly one?',
+    a: 'It depends on hours actually worked. Salaried roles often carry unpaid overtime, so a headline figure that looks higher can convert to a lower effective hourly rate. Run both through this calculator at realistic weekly hours before deciding — that is the comparison that matters.',
+  },
 ]
 
 export default function Page() {
@@ -48,7 +52,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the salary calculator</h2>
+          <h2>The number that makes offers comparable</h2>
+          <p>
+            One role quotes $25 an hour, another $52,000 a year, a third $4,300 a month. On the
+            surface they look close. Whether they actually are depends entirely on hours and weeks
+            worked — variables the headline figures leave out.
+          </p>
+          <p>
+            $25 an hour at 40 hours a week for 52 weeks is exactly $52,000. But if the salaried role
+            expects 45-hour weeks, its effective rate drops to about $22.20 an hour. And if the
+            hourly role only pays for 50 working weeks, its annual figure falls to $50,000. Convert
+            everything to a single basis before comparing — that is what this tool is for.
+          </p>
+
+          <h2>Setting your inputs</h2>
           <p>
             Enter an amount, tell the calculator what period it covers, and set your hours per week,
             days per week, and weeks worked per year. It converts your pay into hourly, daily,

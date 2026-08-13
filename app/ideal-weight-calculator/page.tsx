@@ -48,7 +48,26 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the ideal weight calculator</h2>
+          <h2>There is no single &ldquo;ideal&rdquo; weight</h2>
+          <p>
+            The four formulas on this page disagree with each other, and that disagreement is the
+            most useful thing about them. For a 175 cm man they return figures spanning roughly 69 to
+            72 kg — a three-kilogram spread from the same height and sex.
+          </p>
+          <p>
+            The reason is that none of them were derived from research into optimal health. Devine
+            (1974) was built for calculating drug dosages. Hamwi (1964) came from diabetes practice.
+            Robinson and Miller (both 1983) were attempts to fit population data more closely. They
+            survive because they are quick, not because any one is authoritative.
+          </p>
+          <p>
+            Read them as a band rather than a target. If the four formulas cluster around 70 kg and
+            the healthy BMI range for your height spans 57 to 76 kg, the honest conclusion is that
+            anywhere in that region is defensible — and that body composition and how you feel matter
+            more than closing the gap to a specific decimal.
+          </p>
+
+          <h2>Reading the four formulas</h2>
           <p>
             Choose metric or imperial units, select your sex, and enter your height. The calculator
             shows the ideal body weight from four established formulas — Robinson, Miller, Devine, and

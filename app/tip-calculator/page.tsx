@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
 import ToolShell, { type Faq } from '@/components/ToolShell'
+import { RefTable } from '@/components/content'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'tip-calculator')!
@@ -39,6 +40,10 @@ const faqs: Faq[] = [
     q: 'What does the round-up option do?',
     a: 'Rounding up raises the final total to the next whole currency unit and recalculates the tip to match, so you end on a clean number that is easy to pay in cash. The tip shown then reflects the rounded total rather than the exact percentage.',
   },
+  {
+    q: 'Should I tip on a discounted bill?',
+    a: 'The usual convention is to tip on what the bill would have been before the discount or voucher. The server did the same work either way, and a 20% tip on a half-price meal is effectively a 10% tip on the service provided.',
+  },
 ]
 
 export default function Page() {
@@ -48,29 +53,60 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the tip calculator</h2>
+          <h2>What each percentage actually costs</h2>
           <p>
-            Enter your bill amount, choose a tip percentage with the preset buttons or the slider,
-            and optionally set how many people are splitting the bill. The tip, the total, and the
-            amount each person owes update instantly. Turning on round-up gives you a clean total
-            that is easy to settle in cash.
+            Tipping decisions get made in a few seconds at a table, usually without a clear sense of
+            the difference between the options. On a typical restaurant bill the gap between the
+            standard tiers is smaller than people expect:
           </p>
 
-          <h2>Tipping without the mental math</h2>
+          <RefTable
+            caption="Tip and total on a $64 bill"
+            head={['Tip %', 'Tip', 'Total', 'Split 4 ways']}
+            rows={[
+              ['15%', '$9.60', '$73.60', '$18.40'],
+              ['18%', '$11.52', '$75.52', '$18.88'],
+              ['20%', '$12.80', '$76.80', '$19.20'],
+              ['25%', '$16.00', '$80.00', '$20.00'],
+            ]}
+          />
+
           <p>
-            Working out a percentage of an odd bill total in your head is exactly the kind of small
-            friction this tool removes. Pick the percentage you intend to leave and the calculator
-            handles the arithmetic, including the awkward part — dividing an uneven total across a
-            group so nobody underpays or overpays.
+            Moving from 15% to 20% costs $3.20 on this bill — about 80 cents per person in a group of
+            four. Framed that way the decision is usually easier to make quickly.
           </p>
 
-          <h2>A quick note on tipping norms</h2>
+          <h2>The mental shortcut for 20%</h2>
           <p>
-            Expected tipping varies enormously around the world. In some countries a service charge
-            is already included and additional tipping is optional; in others tipping is not
-            customary at all. When you travel, check local expectations rather than applying a single
-            percentage everywhere. This calculator simply does the maths for whatever percentage you
-            decide is appropriate.
+            If you want to check the calculator or you are somewhere without a phone, 20% has an easy
+            trick: move the decimal point one place left to get 10%, then double it. On a $64 bill,
+            10% is $6.40, so 20% is $12.80. For 15%, take that same 10% and add half of it again —
+            $6.40 plus $3.20 gives $9.60. Both work in a couple of seconds and are exact, not
+            approximations.
+          </p>
+
+          <h2>Pre-tax or post-tax, and the rounding question</h2>
+          <p>
+            Tipping on the pre-tax subtotal is the traditional convention, since the tax is not part
+            of the service you received. Tipping on the post-tax total is also widely accepted and
+            costs only marginally more. Either is defensible — just enter whichever figure you have
+            decided to work from.
+          </p>
+          <p>
+            The round-up option raises the final total to the next whole currency unit and recomputes
+            the tip to match, which is convenient when settling in cash. Note that this means the
+            effective percentage drifts slightly from what you selected — usually upward, since it
+            rounds up rather than to the nearest.
+          </p>
+
+          <h2>Tipping is not universal</h2>
+          <p>
+            Expectations vary enormously by country. Parts of Europe include a service charge and
+            treat additional tipping as optional rounding; in Japan and South Korea tipping is not
+            customary and can even cause confusion. The 15–20% convention this calculator&rsquo;s
+            presets reflect is specifically a North American norm. When travelling, check local
+            practice rather than exporting a percentage — the tool will happily compute whatever
+            figure is appropriate where you are.
           </p>
         </>
       }

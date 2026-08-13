@@ -48,7 +48,26 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the temperature converter</h2>
+          <h2>Two scales, two different jobs</h2>
+          <p>
+            Celsius is anchored to water: 0° for freezing, 100° for boiling. It is tidy, which is why
+            science and most of the world adopted it. Fahrenheit was anchored to something else
+            entirely — roughly the range of human weather — putting freezing at 32° and boiling at
+            212°.
+          </p>
+          <p>
+            That awkward-looking spread has one practical advantage: it gives about 1.8 Fahrenheit
+            degrees for every Celsius degree, so everyday air temperatures divide into finer whole
+            numbers. The difference between 71°F and 73°F is one people notice; in Celsius both round
+            to 22°.
+          </p>
+          <p>
+            Kelvin sidesteps both conventions by starting at absolute zero, the point where thermal
+            motion stops. It shares Celsius&rsquo;s degree size, so conversion is just addition —
+            and it never goes negative, which is why physics uses it.
+          </p>
+
+          <h2>The conversions in practice</h2>
           <p>
             Enter a temperature, choose the scale it is in, and the equivalent values in the other
             two scales appear instantly. Whether you are reading a foreign weather forecast, following

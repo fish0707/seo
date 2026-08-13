@@ -48,7 +48,19 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the pace calculator</h2>
+          <h2>Turning a goal time into a number you can hold</h2>
+          <p>
+            Race goals are set in finish times but run in pace. A sub-2-hour half marathon sounds
+            like a single target; on the road it is 5:41 per kilometre, held for 21.1 km. That
+            translation is the difference between a plan and a wish.
+          </p>
+          <p>
+            The common benchmarks are worth knowing: a sub-4-hour marathon needs 5:41/km, a sub-25
+            5K needs 5:00/km, and a sub-50 10K needs 5:00/km as well. Enter any distance and goal
+            time above and the calculator gives you the exact pace, in both km and miles.
+          </p>
+
+          <h2>Pace versus speed</h2>
           <p>
             Enter the distance you ran and your total time in hours, minutes, and seconds. The
             calculator shows your pace per kilometre or mile, the equivalent pace in the other unit,

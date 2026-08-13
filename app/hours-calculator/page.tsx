@@ -39,6 +39,10 @@ const faqs: Faq[] = [
     q: 'How do I turn hours into pay?',
     a: 'Multiply the decimal hours by your hourly rate. If you worked 7.5 hours at $20 per hour, that is 7.5 × 20 = $150. Using the decimal figure avoids mistakes that happen when people multiply the minutes directly.',
   },
+  {
+    q: 'How do I handle a shift with several breaks?',
+    a: 'Add the break minutes together and enter the total in the break field. If the shift itself is split across separate blocks — a morning session and an evening one, say — calculate each block on its own and add the decimal hours, which avoids the rounding drift you get from adding hours and minutes by hand.',
+  },
 ]
 
 export default function Page() {
@@ -48,19 +52,25 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the hours calculator</h2>
+          <h2>Minutes are base 60, and payroll is base 10</h2>
+          <p>
+            This mismatch is the single largest source of timesheet errors. Half an hour written as
+            0.30 instead of 0.50 underpays by twelve minutes on every shift it appears in. Over a
+            year of five-day weeks that is more than twenty-five hours of unpaid work from one
+            recurring typo.
+          </p>
+          <p>
+            The conversion is simply minutes ÷ 60. The four that come up constantly are worth
+            committing to memory: 15 minutes is 0.25, 20 minutes is 0.33, 30 minutes is 0.5, and 45
+            minutes is 0.75. This calculator shows both formats side by side so you never have to
+            convert by hand before multiplying by a rate.
+          </p>
+
+          <h2>Entering a shift</h2>
           <p>
             Enter your start time and end time, then add any unpaid break in minutes. The calculator
             returns the worked duration both as hours and minutes and as a decimal number of hours,
             which is the format payroll and timesheet systems usually require.
-          </p>
-
-          <h2>Why decimal hours matter</h2>
-          <p>
-            The trickiest part of time arithmetic is that minutes are in base 60, not base 100. Half
-            an hour is 0.5 hours, not 0.30, and getting this wrong is a common source of payroll
-            errors. By showing the decimal conversion alongside the hours-and-minutes result, this
-            tool lets you multiply straight by an hourly rate without any manual conversion.
           </p>
 
           <h2>Overnight and multi-part shifts</h2>

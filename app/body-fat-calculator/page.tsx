@@ -48,7 +48,21 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the body fat calculator</h2>
+          <h2>Consistency beats precision here</h2>
+          <p>
+            The U.S. Navy method depends entirely on tape measurements, which means how you hold the
+            tape matters as much as where. A centimetre of extra tension at the waist can shift the
+            result by more than a full percentage point.
+          </p>
+          <p>
+            That sounds like a flaw, and for a single reading it is — treat any one result as a
+            ballpark within a few points of the truth. But it becomes a strength when you measure the
+            same way each time: same spots, same tension, same time of day, before eating. The
+            absolute number may be slightly off, yet the direction it moves over weeks is reliable,
+            and the trend is what you actually want to know.
+          </p>
+
+          <h2>Taking the measurements</h2>
           <p>
             Select your sex and enter your height, neck, and waist measurements in centimetres — plus
             hips if you are female. Optionally add your weight to also see your fat mass and lean mass.
@@ -65,14 +79,17 @@ export default function Page() {
             measure captures.
           </p>
 
-          <h2>Measure consistently to track progress</h2>
+          <h2>What the categories mean</h2>
           <p>
-            The single most important habit is to measure the same way every time: same tape tension,
-            same spots, same time of day. Because the Navy method depends on circumferences, a
-            centimetre of difference in how you hold the tape can shift the result by a percentage
-            point or two. Treat any one reading as an estimate, but a series of readings taken
-            consistently gives a reliable picture of the trend. This tool is for general information
-            and is not a medical assessment.
+            The bands this calculator reports come from the American Council on Exercise. Essential
+            fat — around 3–5% for men and 10–13% for women — is the minimum the body needs for normal
+            function; going below it is genuinely harmful rather than impressively lean. The athletic
+            and fitness bands sit above that, and the average band above those.
+          </p>
+          <p>
+            Sitting in the average band is not a diagnosis. Body fat is one input among many, and a
+            person in the middle of that range who is active and eating well is in a very different
+            position from someone at the same percentage who is neither.
           </p>
         </>
       }

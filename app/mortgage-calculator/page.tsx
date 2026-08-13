@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
 import ToolShell, { type Faq } from '@/components/ToolShell'
+import { WorkedExample, Note } from '@/components/content'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'mortgage-calculator')!
@@ -39,6 +40,14 @@ const faqs: Faq[] = [
     q: 'Does a shorter term save money?',
     a: 'Yes, substantially. A 15-year mortgage has higher monthly payments than a 30-year one but far lower total interest, because you borrow the money for half as long. Compare terms in the calculator to see the trade-off between monthly affordability and lifetime cost.',
   },
+  {
+    q: 'What is escrow?',
+    a: 'An escrow account is where your lender holds the tax and insurance portion of each payment until those bills come due, then pays them on your behalf. It is why your monthly figure covers more than the loan, and why that figure can change from year to year even on a fixed-rate mortgage — the loan part stays fixed, but tax and insurance premiums move.',
+  },
+  {
+    q: 'Why did my fixed-rate payment go up?',
+    a: 'Almost always because the escrow portion changed, not the loan. A property reassessment or an insurance premium increase raises the amount your lender needs to collect, and the monthly payment is adjusted to match. The principal and interest component of a fixed-rate mortgage does not change.',
+  },
 ]
 
 export default function Page() {
@@ -48,32 +57,61 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the mortgage calculator</h2>
+          <h2>Your payment is four things, not one</h2>
           <p>
-            Enter the home price, your down payment, the interest rate, and the loan term. Optionally
-            add your annual property tax and home insurance to see a fuller monthly figure. The
-            calculator breaks the payment into principal and interest, tax, and insurance, and shows
-            the loan amount you would actually borrow.
+            Lenders and property listings quote &ldquo;the mortgage,&rdquo; but the money that leaves
+            your account each month is usually four separate costs bundled together. The industry
+            shorthand is PITI:
           </p>
 
-          <h2>See the real monthly cost, not just the loan</h2>
+          <WorkedExample
+            title="A $350,000 home, $70,000 down, 6.5% over 30 years"
+            steps={[
+              { label: 'Principal & interest', value: '$1,769.79' },
+              { label: 'Property tax ($3,600/yr)', value: '$300.00' },
+              { label: 'Home insurance ($1,200/yr)', value: '$100.00' },
+            ]}
+            result="Total monthly payment = $2,169.79"
+          />
+
           <p>
-            The most common budgeting mistake homebuyers make is estimating only the principal and
-            interest and forgetting the extras. Property taxes and insurance can add a meaningful
-            amount to the monthly payment, and lenders usually collect them together with the loan in
-            an escrow account. Including them here gives you a number much closer to what will
-            actually leave your account each month.
+            The loan itself accounts for about 82% of that figure. Budget only for principal and
+            interest and you will be short by roughly $400 every month — which is precisely the gap
+            that catches first-time buyers. Lenders normally collect tax and insurance into an escrow
+            account alongside the loan payment, so the bundled figure is what you actually plan
+            around.
           </p>
 
-          <h2>Test the levers before you commit</h2>
+          <h2>Why the early years feel like standing still</h2>
           <p>
-            Because the result updates instantly, use the calculator to explore how each input moves
-            your payment. A larger down payment shrinks the loan and the monthly cost; a lower rate or
-            shorter term changes the total interest dramatically. Trying a few combinations helps you
-            find a payment that fits your budget while keeping the lifetime cost sensible. These are
-            estimates for planning — your lender&rsquo;s official quote, including any mortgage
-            insurance or fees, is the binding figure.
+            Interest is charged on what you still owe, and at the start you owe nearly everything. On
+            the loan above, the first payment splits roughly $1,517 to interest and just $253 to
+            principal. After a full year of payments totalling over $21,000, the balance has dropped
+            by only about $3,100.
           </p>
+          <p>
+            That ratio inverts slowly. On this loan it takes until year 19 before principal finally
+            makes up the larger half of a payment. It also explains why overpaying early is
+            so effective: money put in during year one erases principal that would otherwise have
+            accrued interest for another 29 years, while the same sum in year 28 saves almost
+            nothing.
+          </p>
+
+          <h2>Which lever to pull</h2>
+          <p>
+            Three inputs control the payment, and they do not work equally. A bigger down payment
+            reduces the loan proportionally — the most direct lever, if you have the cash. A lower
+            rate reduces the interest without touching the debt, which is why shopping lenders is
+            worth real effort. A longer term reduces the monthly figure but raises lifetime cost
+            sharply, so treat it as an affordability tool rather than a saving.
+          </p>
+
+          <Note>
+            This calculator covers principal, interest, tax, and insurance. Depending on your loan and
+            location you may also owe private mortgage insurance (common below a 20% down payment) or
+            HOA fees, neither of which is included here. Your lender&rsquo;s formal quote is the
+            binding figure.
+          </Note>
         </>
       }
     >

@@ -48,7 +48,25 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the calories burned calculator</h2>
+          <h2>Exercise burns less than most people assume</h2>
+          <p>
+            A 70 kg person running for 30 minutes at a moderate pace burns roughly 343 calories.
+            That is a little under two chocolate bars, and less than a large latte and a muffin.
+          </p>
+          <p>
+            This is not an argument against exercising — the cardiovascular, metabolic, and mental
+            health returns are substantial and well evidenced. It is an argument against treating
+            exercise as the primary lever for weight loss. Half an hour of hard work is easily undone
+            by a single relaxed decision at the counter afterwards, which is why intake usually
+            dominates the equation.
+          </p>
+          <p>
+            Where exercise does move the needle is in accumulation and in what it protects. Daily
+            walking adds up to far more than three weekly gym sessions, and resistance work preserves
+            the muscle that a calorie deficit would otherwise strip alongside fat.
+          </p>
+
+          <h2>Reading the estimate</h2>
           <p>
             Choose your activity, enter your body weight and how many minutes you exercised, and the
             calculator estimates the calories burned along with a per-minute figure. Switch between

@@ -48,7 +48,24 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the speed converter</h2>
+          <h2>Why sailors and pilots use a different unit</h2>
+          <p>
+            The knot looks like an arbitrary holdover, but it is the one speed unit tied to the shape
+            of the planet. A nautical mile is one minute of latitude — one sixtieth of a degree —
+            which means a vessel travelling at one knot covers exactly one minute of latitude per
+            hour.
+          </p>
+          <p>
+            For anyone navigating by chart, that removes a conversion step entirely: distance on the
+            map and speed through the water share the same underlying unit. It is why the knot
+            survived metrication in both marine and aviation use while almost everything else changed.
+          </p>
+          <p>
+            In everyday terms, one knot is 1.852 km/h or about 1.15 mph — so a ship making 20 knots
+            is moving at roughly 37 km/h.
+          </p>
+
+          <h2>Everyday conversions</h2>
           <p>
             Enter a value and select its unit. The converter instantly shows the equivalent speed in
             every other unit — kilometres per hour, miles per hour, metres per second, feet per

@@ -48,7 +48,21 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the ovulation calculator</h2>
+          <h2>Ovulation is counted backwards, not forwards</h2>
+          <p>
+            The common assumption is that ovulation happens on day 14. That is only true for a
+            textbook 28-day cycle. What actually stays relatively fixed is the second half of the
+            cycle — the luteal phase — which runs about 14 days regardless of total cycle length.
+          </p>
+          <p>
+            So ovulation is estimated by counting back 14 days from the next expected period, not
+            forward from the last one. On a 32-day cycle that puts ovulation around day 18, not day
+            14. Getting this backwards is the single most common reason people miscalculate their
+            fertile window by several days, which is why this calculator asks for your own average
+            cycle length rather than assuming 28.
+          </p>
+
+          <h2>Reading your fertile window</h2>
           <p>
             Enter the first day of your last period and your average cycle length. The calculator
             estimates your ovulation day, your most fertile window, and when your next period is

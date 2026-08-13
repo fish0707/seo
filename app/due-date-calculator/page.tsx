@@ -48,7 +48,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the due date calculator</h2>
+          <h2>Only about 4 in 100 babies arrive on the date</h2>
+          <p>
+            A due date is a reference point, not an appointment. Roughly 4% of births happen on the
+            estimated date itself, and the large majority fall somewhere in the three weeks either
+            side of it. Full term is officially defined as 39 weeks 0 days to 40 weeks 6 days, with
+            37 to 42 weeks all considered within normal range.
+          </p>
+          <p>
+            Knowing that spread ahead of time spares a lot of anxiety in the final fortnight. The
+            date is most useful for scheduling appointments and tracking gestational milestones —
+            not for planning the day itself.
+          </p>
+
+          <h2>How the estimate is produced</h2>
           <p>
             Enter the first day of your last menstrual period and your average cycle length. The
             calculator estimates your due date, shows roughly how many weeks and days along you are

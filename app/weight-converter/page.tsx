@@ -48,7 +48,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the weight converter</h2>
+          <h2>The stone still trips people up</h2>
+          <p>
+            Most weight conversions are straightforward multiplications. The stone is the exception,
+            because it is the one unit still in daily conversational use that almost nobody outside
+            the UK and Ireland can convert on sight.
+          </p>
+          <p>
+            One stone is 14 pounds, or about 6.35 kilograms — and body weight is usually quoted as a
+            compound figure like &ldquo;11 stone 4&rdquo;, meaning 11 stone plus 4 pounds, or 158
+            pounds, or 71.7 kg. The mixed-unit format is what makes it awkward: you have to convert
+            the stones and the loose pounds separately before adding them.
+          </p>
+
+          <h2>Converting between systems</h2>
           <p>
             Enter a value and pick the unit it is in. The converter immediately shows the equivalent
             in every other supported unit — milligrams, grams, kilograms, ounces, pounds, and stones

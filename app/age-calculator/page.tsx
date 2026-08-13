@@ -48,7 +48,21 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the age calculator</h2>
+          <h2>Why calendar months make this harder than it looks</h2>
+          <p>
+            Age sounds like simple subtraction until you try to write the rule down. Months are not a
+            fixed length, February changes size every four years, and &ldquo;one month after 31
+            January&rdquo; has no obvious answer. A calculation that treats every month as 30 days
+            drifts by roughly five days a year — enough to put a birthday on the wrong side of a
+            deadline.
+          </p>
+          <p>
+            This calculator counts real calendar months and real leap years. It works out completed
+            years first, then completed months, then the leftover days, which is the same convention
+            used on official forms and by immigration and school-entry rules.
+          </p>
+
+          <h2>Using it in practice</h2>
           <p>
             Enter your date of birth in the first field and your exact age appears instantly —
             broken down into years, months, and days, along with the total number of months, weeks,

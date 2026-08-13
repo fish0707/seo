@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { TOOLS, toolUrl } from '@/lib/site'
 import ToolShell, { type Faq } from '@/components/ToolShell'
+import { RefTable, Note } from '@/components/content'
 import Calculator from './Calculator'
 
 const tool = TOOLS.find(t => t.slug === 'loan-calculator')!
@@ -39,6 +40,14 @@ const faqs: Faq[] = [
     q: 'What is the difference between interest rate and APR?',
     a: 'The interest rate is the cost of borrowing the principal. The APR (annual percentage rate) also folds in certain fees, so it is usually slightly higher and gives a fuller picture of the loan cost. This calculator uses the interest rate; check the APR when comparing offers.',
   },
+  {
+    q: 'Can I pay a loan off early?',
+    a: 'Usually yes, but check for prepayment penalties before you commit — some fixed-rate agreements charge a fee for settling early, which can cancel out the interest you save. Where overpayments are allowed, ask the lender to apply them to the principal rather than to future scheduled payments, otherwise the balance does not shrink and neither does the interest.',
+  },
+  {
+    q: 'Does a longer term ever make sense?',
+    a: 'It can, when the lower monthly payment is what keeps the loan affordable or leaves cash free for something earning more than the interest rate costs. Treat it as buying breathing room rather than saving money, and if your circumstances improve, overpaying converts a long term back into a short one without needing to refinance.',
+  },
 ]
 
 export default function Page() {
@@ -48,31 +57,55 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the loan calculator</h2>
+          <h2>The trade-off nobody shows you at the counter</h2>
           <p>
-            Enter how much you want to borrow, the annual interest rate, and the term in years. The
-            calculator returns your fixed monthly payment along with the total interest and the total
-            amount you will have paid by the end of the loan. Everything is computed in your browser.
+            Lenders quote the monthly payment because it is the number that decides whether you say
+            yes. It is also the number that hides the cost. Stretching a loan over more years shrinks
+            every payment while quietly increasing the total, because interest keeps accruing for all
+            those extra months.
+          </p>
+          <p>
+            Here is the same $20,000 borrowed at 6.5%, changing nothing but the term:
           </p>
 
-          <h2>Why the total cost matters as much as the payment</h2>
+          <RefTable
+            head={['Term', 'Monthly payment', 'Total interest', 'Total repaid']}
+            rows={[
+              ['3 years', '$612.98', '$2,067', '$22,067'],
+              ['5 years', '$391.32', '$3,479', '$23,479'],
+              ['7 years', '$296.99', '$4,947', '$24,947'],
+              ['10 years', '$227.10', '$7,252', '$27,252'],
+            ]}
+          />
+
           <p>
-            It is easy to focus only on whether the monthly payment fits your budget, but the total
-            interest tells the real story. Stretching a loan over a longer term lowers each payment
-            yet can dramatically increase what you pay overall, because interest accrues for more
-            months. Comparing the total-interest figure across different terms is often more
-            revealing than comparing the monthly amounts.
+            Going from three years to ten cuts the monthly payment by about 63% — and more than
+            triples the interest. Neither column is the &ldquo;right&rdquo; answer on its own. The
+            short term is cheaper; the long term is survivable month to month. What matters is that
+            you choose with both numbers in front of you, which is exactly what the calculator above
+            puts there.
           </p>
 
-          <h2>Trying different scenarios</h2>
+          <h2>Where the money goes early on</h2>
           <p>
-            Because the result updates instantly, this tool is well suited to what-if comparisons.
-            Try the same amount over 3, 5, and 7 years, or compare two interest rates, and watch how
-            the monthly payment and total interest move in opposite directions. That trade-off —
-            lower payments versus lower total cost — is the central decision in any borrowing choice.
-            The figures here are estimates for planning; your lender&rsquo;s official quote is the
-            binding one.
+            Fixed-rate loans are amortised, which means every payment is identical but its split
+            changes. Interest is charged on the outstanding balance, so at the start — when you owe
+            the most — the majority of your payment is interest and only a sliver reduces the debt.
+            As the balance falls, that ratio flips. On a 30-year mortgage it can take well over a
+            decade before principal outweighs interest in a given payment.
           </p>
+          <p>
+            This is why overpaying early is disproportionately powerful. An extra payment in year one
+            removes principal that would otherwise have accrued interest for the entire remaining
+            term; the same payment in the final year saves almost nothing. If your loan permits
+            penalty-free overpayments, the first years are where they buy the most.
+          </p>
+
+          <Note>
+            The figures here assume a fixed rate and no fees. Compare lenders on APR rather than the
+            headline interest rate, since APR folds in certain charges and is the closer proxy for
+            what the loan actually costs you.
+          </Note>
         </>
       }
     >

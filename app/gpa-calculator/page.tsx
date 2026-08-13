@@ -39,6 +39,10 @@ const faqs: Faq[] = [
     q: 'Do pass/fail or withdrawn courses count?',
     a: 'Usually not. Pass/fail courses, withdrawals, and transfer credits are typically excluded from GPA even though they may count toward graduation. Only include courses that received a letter grade on the 4.0 scale for an accurate result.',
   },
+  {
+    q: 'Do retaken courses replace the original grade?',
+    a: 'Policies differ. Some institutions replace the original grade entirely, others average the two, and others keep both on the transcript while counting only the higher one toward the GPA. Check your own institution\'s rule before modelling a retake here, since it changes which entries you should include.',
+  },
 ]
 
 export default function Page() {
@@ -48,7 +52,20 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the GPA calculator</h2>
+          <h2>You cannot average your semester GPAs</h2>
+          <p>
+            This is the mistake that produces wrong transcripts. If you scored 3.8 one semester and
+            3.2 the next, your cumulative GPA is only 3.5 if both semesters carried identical credit
+            loads. Take 18 credits in the strong semester and 9 in the weak one and the real figure
+            is 3.6.
+          </p>
+          <p>
+            GPA is a credit-weighted average, so the only correct way to find a cumulative figure is
+            to feed in every course individually with its own credit hours — which is why this
+            calculator takes courses rather than semester averages.
+          </p>
+
+          <h2>Entering your courses</h2>
           <p>
             Enter each course&rsquo;s letter grade and its credit hours — the course name is optional
             and just helps you keep track. Add or remove rows as needed, and your weighted GPA

@@ -39,6 +39,14 @@ const faqs: Faq[] = [
     q: 'How accurate is this calorie estimate?',
     a: 'The Mifflin-St Jeor equation is one of the most accurate general formulas, but every estimate is a starting point. Real needs vary with body composition, genetics, and non-exercise movement. Use the number as a baseline, track your weight over a few weeks, and adjust intake up or down based on what actually happens.',
   },
+  {
+    q: 'Why has my weight loss stalled?',
+    a: 'Two reasons dominate. As you lose weight your body becomes smaller and burns fewer calories, so the deficit that worked at the start becomes maintenance later — recalculate every few kilograms. The other is that portion estimates drift upward over time; a few weeks of accurate logging usually explains the gap.',
+  },
+  {
+    q: 'Should I eat back the calories I burn exercising?',
+    a: 'Partially at most. Exercise burn estimates tend to run high, and activity multipliers in this calculator already account for regular training, so eating back a logged burn on top double-counts it. If you are hungry after hard sessions, add a portion of it rather than all of it and adjust based on results.',
+  },
 ]
 
 export default function Page() {
@@ -48,7 +56,26 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the calorie calculator</h2>
+          <h2>Be honest about the activity multiplier</h2>
+          <p>
+            Everything else on this page is arithmetic. The activity level is a judgement call, and
+            it is where most estimates go wrong — because the multiplier ranges from 1.2 to 1.9,
+            picking one level too high inflates your daily target by several hundred calories.
+          </p>
+          <p>
+            For a 70 kg, 175 cm, 30-year-old man with a BMR of about 1,649, the spread looks like
+            this: sedentary gives 1,979 kcal, moderate gives 2,556, and very active gives 3,133. That
+            is a range of over 1,150 calories from the same body — enough to turn an intended deficit
+            into a surplus.
+          </p>
+          <p>
+            The common error is rating yourself on your best week rather than your typical one. Three
+            gym sessions among five sedentary desk days is &ldquo;light,&rdquo; not
+            &ldquo;active.&rdquo; When genuinely unsure, choose the lower option: it is far easier to
+            add calories after two weeks of no progress than to unpick a deficit that was never real.
+          </p>
+
+          <h2>Reading your result</h2>
           <p>
             Enter your age, sex, height, weight, and activity level in metric or imperial units. The
             calculator estimates your Basal Metabolic Rate and your Total Daily Energy Expenditure —

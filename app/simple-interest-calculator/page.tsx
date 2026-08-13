@@ -48,7 +48,26 @@ export default function Page() {
       faqs={faqs}
       article={
         <>
-          <h2>How to use the simple interest calculator</h2>
+          <h2>The gap between simple and compound</h2>
+          <p>
+            Simple interest is charged only on the original principal, so it grows in a straight
+            line. Compound interest is charged on the balance including interest already earned, so
+            it curves upward. Over short periods the difference is negligible; over long ones it is
+            enormous.
+          </p>
+          <p>
+            On $10,000 at 5%, simple interest yields $500 every year without fail — $2,500 after five
+            years, $5,000 after ten. Compound interest yields $2,763 after five years and $6,289
+            after ten. By year thirty the gap has widened to $15,000 versus $33,219, more than
+            double.
+          </p>
+          <p>
+            Which one applies to you is not a preference — it is written into the agreement. Many
+            personal and car loans use simple interest; savings accounts, credit card balances, and
+            most investments compound. Check which before assuming.
+          </p>
+
+          <h2>Running the calculation</h2>
           <p>
             Enter the principal, the annual interest rate, and the time in years. The calculator
             returns the interest earned or owed and the total amount, using the simple interest
