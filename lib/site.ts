@@ -293,6 +293,15 @@ export const TOOLS: Tool[] = [
     keywords:
       'speed converter, kmh to mph, mph to kmh, meters per second, knots converter, convert speed units',
   },
+  {
+    slug: 'day-trading-fee-calculator',
+    name: 'Taiwan Stock Day Trading Fee Calculator',
+    shortName: 'TW Day Trading Fees',
+    description:
+      'Calculate brokerage commission, day-trade transaction tax, and the exact breakeven price for a Taiwan Stock Exchange (TWSE) day trade, including broker discounts and minimum fees.',
+    keywords:
+      'day trading fee calculator, taiwan stock day trade cost, twse day trade tax, 當沖手續費計算, 當沖證交稅, 損益兩平價, brokerage commission calculator taiwan',
+  },
 ]
 
 export const toolUrl = (slug: string) => `${SITE_URL}/${slug}`
